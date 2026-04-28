@@ -1,0 +1,13 @@
+{
+  "name": "@atom/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./data.js",
+  "exports": {
+    ".": "./data.js",
+    "./data": "./data.js",
+    "./hooks/*": "./hooks/*",
+    "./components/*": "./components/*"
+  }
+}

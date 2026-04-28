@@ -1,0 +1,332 @@
+/**
+ * Site content for all three theme variants.
+ *
+ * PRIVACY CONSTRAINT (R8): This file MUST NOT contain email addresses, phone numbers,
+ * home addresses, or any other PII. Contact channels are LinkedIn and GitHub only.
+ * The PII scanner (scripts/scan-pii.mjs) verifies this on every build.
+ *
+ * Content positioning: emphasizes security leadership, mentoring, strategic program work,
+ * and cross-functional collaboration — targeting lead/manager roles.
+ */
+
+/**
+ * @typedef {Object} Personal
+ * @property {string} name - Full name
+ * @property {string} title - Professional title
+ * @property {string} tagline - One-line elevator pitch
+ * @property {string} location - City, state (no street address)
+ */
+
+/**
+ * @typedef {Object} Highlight
+ * @property {string} label - Short metric or descriptor
+ * @property {string} value - The number or fact (e.g., "8M+", "30+")
+ * @property {string} caption - Brief context line
+ */
+
+/**
+ * @typedef {Object} SkillGroup
+ * @property {string} category - Category name
+ * @property {string[]} items - Skills in this category
+ */
+
+/**
+ * @typedef {Object} ExperienceEntry
+ * @property {string} company
+ * @property {string} role
+ * @property {string} start - YYYY-MM
+ * @property {string} end - YYYY-MM or "Present"
+ * @property {string[]} leadership - Leadership / strategic bullets
+ * @property {string[]} delivery - Technical program delivery bullets
+ * @property {Array<{label: string, value: string}>} metrics - Headline metrics for this role
+ */
+
+/**
+ * @typedef {Object} Project
+ * @property {string} title
+ * @property {string} summary - One-sentence description
+ * @property {string} description - Longer paragraph
+ * @property {string[]} tags - Tech / domain tags
+ * @property {string} impact - What it achieved
+ * @property {Array<{label: string, url: string}>} links - External links (no email)
+ */
+
+/**
+ * @typedef {Object} Social
+ * @property {string} label
+ * @property {string} url
+ * @property {string} handle
+ */
+
+/** @type {Personal} */
+export const personal = {
+  name: 'Gage Nichols',
+  title: 'Cyber Security Engineer',
+  tagline: 'Cloud & Security Operations · Strategic Risk Management',
+  location: 'San Antonio, TX',
+};
+
+/**
+ * Bio paragraphs — positioned for security leadership / management roles.
+ * @type {string[]}
+ */
+export const bio = [
+  'Security engineering leader delivering enterprise cloud security solutions for 8M+ users while building teams and driving compliance initiatives.',
+  'Combines technical depth with strategic leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering) with recent focus on cloud-native security capabilities and agentic AI for security velocity.',
+  'Passionate about mentoring engineers, standardizing security processes, and growing into security leadership.',
+];
+
+/**
+ * Headline highlights — surfaced near the top of every theme.
+ * @type {Highlight[]}
+ */
+export const highlights = [
+  { label: 'Users Protected', value: '8M+', caption: 'across enterprise cloud infrastructure' },
+  { label: 'Client Platforms', value: '90+', caption: 'multi-account AWS environments' },
+  { label: 'AWS Accounts', value: '30+', caption: 'with 200k+ resources under CSPM' },
+  { label: 'Compliance', value: 'SOC 2 · PCI DSS', caption: 'achieved in partnership with leadership' },
+  { label: 'Experience', value: '5+ years', caption: 'across the security lifecycle' },
+];
+
+/**
+ * Skills grouped by category. Order matters — leadership first to reinforce positioning.
+ * @type {SkillGroup[]}
+ */
+export const skills = [
+  {
+    category: 'Leadership & Strategy',
+    items: [
+      'Team Leadership & Mentorship',
+      'Cross-Functional Collaboration',
+      'Strategic Planning & Roadmap Development',
+      'Vendor & Budget Management',
+      'Project & Program Management',
+      'Risk Management & Decision Making',
+    ],
+  },
+  {
+    category: 'Compliance & Frameworks',
+    items: ['SOC 2', 'PCI DSS', 'GRC'],
+  },
+  {
+    category: 'Cloud & Infrastructure',
+    items: [
+      'AWS Multi-Account Architecture',
+      'Cloud Security Posture Management (CSPM)',
+      'Identity & Access Management (IAM)',
+      'Infrastructure as Code (IaC)',
+      'Security Automation',
+    ],
+  },
+  {
+    category: 'Security Operations',
+    items: [
+      'Vulnerability Management',
+      'Threat Detection',
+      'Incident Response',
+      'Digital Forensics',
+      'Data Loss Prevention (DLP)',
+    ],
+  },
+];
+
+/**
+ * Work experience — most recent first. Each role separates leadership impact from technical delivery.
+ * @type {ExperienceEntry[]}
+ */
+export const experience = [
+  {
+    company: 'Lumin Digital',
+    role: 'Cyber Security Engineer',
+    start: '2023-08',
+    end: 'Present',
+    leadership: [
+      'Supported establishment of an internal IAM team. Provided mentorship, process standardization, and automation workflows',
+      'Drive security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms',
+      'Partnered with leadership on GRC initiatives, achieving SOC 2 and PCI DSS compliance',
+      'Manage vendor relationships and budget allocation for security tooling, evaluating solutions that deliver ROI while meeting compliance',
+    ],
+    delivery: [
+      'Led deployment of Cloud Security Posture Management (CSPM) across 30+ AWS accounts with 200k+ resources, improving visibility and compliance posture',
+      'Designed internal Data Loss Prevention (DLP) tool deployed to 100+ endpoints, reducing compliance risk for sensitive data and fulfilling PCI requirements',
+      'Built and maintained security automation across the cloud environment, improving security operations efficiency',
+    ],
+    metrics: [
+      { label: 'Users', value: '8M+' },
+      { label: 'Client Platforms', value: '90+' },
+      { label: 'AWS Accounts', value: '30+' },
+      { label: 'Resources', value: '200k+' },
+    ],
+  },
+  {
+    company: 'Alkami Technology',
+    role: 'Security Analyst II, Vulnerability Management Team Lead',
+    start: '2022-08',
+    end: '2023-08',
+    leadership: [
+      'Led cross-functional vulnerability management team. Established processes that achieved consistent SLA compliance for high/critical remediation',
+      'Developed team workflows and escalation procedures that reduced average remediation time and improved stakeholder communication',
+      'Coordinated security assessments across engineering teams, balancing risk reduction with development velocity',
+    ],
+    delivery: [
+      'Implemented enterprise-wide vulnerability scanning program and remediation controls, measurably decreasing at-risk system exposure',
+      'Drove risk mitigation strategies in partnership with infrastructure and development teams, strengthening overall security posture',
+    ],
+    metrics: [
+      { label: 'Role', value: 'Team Lead' },
+      { label: 'Focus', value: 'Vuln Mgmt' },
+    ],
+  },
+  {
+    company: 'MoneyGram International',
+    role: 'Security Analyst',
+    start: '2022-01',
+    end: '2022-07',
+    leadership: [
+      'Interacted with stakeholder and leadership teams as part of response and remediation efforts',
+      'Provided on-call coverage for emergency, critical, and large-scale incidents',
+    ],
+    delivery: [
+      'Enhanced incident response processes and tools. Improved detection, escalation, and resolution efficiency',
+      'Investigated cybersecurity incidents and threats; conducted forensic analysis and log review of compromised endpoints',
+      'Improved detection, escalation, containment, and resolution methods, tools, and processes',
+    ],
+    metrics: [
+      { label: 'Focus', value: 'IR & Forensics' },
+    ],
+  },
+];
+
+/**
+ * Education entries.
+ */
+export const education = [
+  {
+    school: 'The University of Texas at San Antonio',
+    degree: 'Bachelor of Science, Computer Science',
+    concentration: 'Computer and Information Security',
+  },
+];
+
+/**
+ * Featured projects / programs. These are work accomplishments framed as "projects" for the portfolio.
+ * @type {Project[]}
+ */
+export const projects = [
+  {
+    title: 'Enterprise Cloud Security Posture Management',
+    summary: 'CSPM rollout across 30+ AWS accounts protecting 200k+ cloud resources.',
+    description:
+      'Led the end-to-end deployment of a Cloud Security Posture Management solution across a multi-account AWS environment. Designed onboarding workflows, integrated with existing alerting infrastructure, and partnered with engineering leadership on remediation processes.',
+    tags: ['AWS', 'CSPM', 'Multi-Account', 'Compliance', 'Leadership'],
+    impact: 'Improved cloud visibility and compliance posture across 30+ accounts and 200k+ resources serving 8M+ end users.',
+    links: [],
+  },
+  {
+    title: 'Internal Data Loss Prevention (DLP) Platform',
+    summary: 'Endpoint DLP deployed to 100+ devices, fulfilling PCI compliance for sensitive data.',
+    description:
+      'Designed and implemented an internal DLP tool to protect sensitive data (including primary account numbers). Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
+    tags: ['DLP', 'PCI DSS', 'Endpoint Security', 'Compliance Engineering'],
+    impact: 'Reduced compliance risk for sensitive data across 100+ endpoints and fulfilled PCI DSS control requirements.',
+    links: [],
+  },
+  {
+    title: 'IAM Team & Process Standardization',
+    summary: 'Helped stand up an internal IAM team. Mentorship, process design, automation workflows.',
+    description:
+      'Supported the formation of an internal Identity & Access Management team. Provided mentorship to new team members, helped establish process standardization, and contributed automation workflows that reduced manual provisioning effort.',
+    tags: ['IAM', 'Team Building', 'Mentorship', 'Process Design'],
+    impact: 'Established a sustainable IAM function with documented processes and automation to support enterprise scale.',
+    links: [],
+  },
+  {
+    title: 'Enterprise Vulnerability Management Program',
+    summary: 'Led a cross-functional vuln management team to consistent SLA compliance.',
+    description:
+      'Built workflows, escalation procedures, and stakeholder communication patterns for an enterprise vulnerability management program. Coordinated assessments across engineering teams while balancing risk reduction with development velocity.',
+    tags: ['Vulnerability Management', 'Team Lead', 'SLA', 'Cross-Functional'],
+    impact: 'Achieved consistent SLA compliance for high/critical vulnerabilities and reduced average remediation time.',
+    links: [],
+  },
+  {
+    title: 'Agentic AI for Security Engineering',
+    summary: 'Leveraging modern AI tooling and development practices to accelerate security engineering velocity.',
+    description:
+      'Recent focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. This portfolio site is itself an example, built collaboratively with AI-driven development to ship faster without sacrificing quality.',
+    tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
+    impact: 'Demonstrating that disciplined process + modern AI tooling compounds engineering output.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/gagenichols' },
+    ],
+  },
+];
+
+/**
+ * Contact channels. LinkedIn ONLY by owner preference. No email, no phone, no GitHub-as-contact.
+ * (GitHub may still appear as a project link where relevant.)
+ * @type {Social[]}
+ */
+export const social = [
+  {
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/gagenichols',
+    handle: 'in/gagenichols',
+  },
+];
+
+/**
+ * Section configuration — single source of truth for nav anchors.
+ */
+export const sections = [
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
+
+/**
+ * SEO metadata defaults.
+ */
+export const seo = {
+  title: 'Gage Nichols | Cyber Security Engineer',
+  description:
+    'Security engineering leader delivering cloud security for 8M+ users. Cloud & security operations, strategic risk management, team leadership.',
+  // Path is relative so the site stays portable across GitHub Pages subpath
+  // and custom domain deployments.  The image lives in each theme's public/
+  // directory so it lands at dist/og-image.jpg.
+  ogImage: './og-image.jpg',
+};
+
+/**
+ * Validate that loaded data has no PII patterns.
+ * Called at build time (Pattern 6 — fail-fast at boundaries).
+ * @param {string} jsonString - Stringified data export
+ * @throws {Error} if email or phone patterns are detected
+ */
+export function assertNoPII(jsonString) {
+  const emailPattern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
+  const phonePattern = /\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
+  if (emailPattern.test(jsonString)) {
+    throw new Error('PII GUARD: email pattern detected in shared data');
+  }
+  if (phonePattern.test(jsonString)) {
+    throw new Error('PII GUARD: phone pattern detected in shared data');
+  }
+}
+
+export default {
+  personal,
+  bio,
+  highlights,
+  skills,
+  experience,
+  education,
+  projects,
+  social,
+  sections,
+  seo,
+  assertNoPII,
+};

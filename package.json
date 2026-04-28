@@ -1,0 +1,19 @@
+{
+  "name": "atom-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Atomic age personal portfolio site — Atomic Lounge / Tomorrowland Mission Control aesthetic",
+  "workspaces": [
+    "shared",
+    "themes/control-room"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=themes/control-room",
+    "build": "npm run pii:scan && npm run build --workspace=themes/control-room",
+    "test": "npm test --workspaces --if-present",
+    "pii:scan": "node scripts/scan-pii.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
