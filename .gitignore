@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code — local-only state (settings.local.json holds user-specific
+# permissions/prefs that shouldn't be shared).  Project-shared Claude config
+# (e.g. .claude/settings.json without "local") may be committed if you create one.
+.claude/settings.local.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.nyc_output/
+
+# PRIVACY: the entire me/ directory is excluded from git.
+# It contains the resume PDF (with email + phone) and personal reference material
+# that must NEVER be pushed to a public repo.  The portrait used by the site lives
+# in shared/assets/portrait.jpg, which IS committed and bundled into builds.
+me/
