@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c1430" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Lobster+Two&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <title>Signal Lost — 404</title>
+    <style>
+      :root {
+        --bg-deep: #0c1430;
+        --bg-mid: #141b3a;
+        --turquoise: #22d3ee;
+        --coral: #ff6b6b;
+        --gold: #fbbf24;
+        --text: #fef8e7;
+        --text-dim: #c4c8e0;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1200px 600px at 50% 20%, rgba(34, 211, 238, 0.08), transparent 70%),
+          radial-gradient(900px 500px at 80% 90%, rgba(255, 107, 107, 0.06), transparent 70%),
+          linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+        color: var(--text);
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 24px;
+      }
+      .lost {
+        max-width: 560px;
+      }
+      .coord {
+        font-family: 'Audiowide', monospace;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--turquoise);
+        font-size: 0.85rem;
+      }
+      h1 {
+        font-family: 'Audiowide', sans-serif;
+        font-size: clamp(3.5rem, 12vw, 6rem);
+        margin: 8px 0 4px;
+        letter-spacing: 0.05em;
+        color: var(--gold);
+        text-shadow: 0 0 32px rgba(251, 191, 36, 0.25);
+      }
+      h2 {
+        font-family: 'Audiowide', sans-serif;
+        font-size: clamp(1.1rem, 3vw, 1.6rem);
+        margin: 0 0 18px;
+        color: var(--text);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      p {
+        color: var(--text-dim);
+        line-height: 1.6;
+        font-size: 1rem;
+        margin: 0 0 28px;
+      }
+      .script {
+        font-family: 'Lobster Two', cursive;
+        color: var(--coral);
+        font-style: italic;
+        font-size: 1.15rem;
+      }
+      a.cta {
+        display: inline-block;
+        background: linear-gradient(180deg, #c81e1f, #a91515);
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font-family: 'Audiowide', sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 0 14px 30px rgba(200, 30, 31, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        transition: transform 0.15s ease;
+      }
+      a.cta:hover, a.cta:focus-visible {
+        transform: translateY(-2px);
+        outline: none;
+      }
+      svg.atom {
+        width: 92px;
+        height: 92px;
+        margin: 0 auto 16px;
+        display: block;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        svg.atom .orbit-spin { animation: spin 14s linear infinite; transform-origin: 50% 50%; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="lost">
+      <svg class="atom" viewBox="0 0 100 100" aria-hidden="true">
+        <g class="orbit-spin">
+          <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="#22d3ee" stroke-width="2" transform="rotate(-30 50 50)"/>
+          <circle cx="89" cy="40" r="3.5" fill="#ff6b6b"/>
+        </g>
+        <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.6" transform="rotate(35 50 50)"/>
+        <circle cx="50" cy="50" r="11" fill="#fbbf24"/>
+        <circle cx="46" cy="46" r="3.5" fill="#fde68a" opacity="0.85"/>
+      </svg>
+      <span class="coord">Sector 404 · Off Course</span>
+      <h1>404</h1>
+      <h2>Signal Lost</h2>
+      <p>
+        The page you tried to reach drifted out of range. <span class="script">No worries, friend.</span>
+        Head back to the console and try a different channel.
+      </p>
+      <a class="cta" href="./">Return to Mission Control</a>
+    </main>
+  </body>
+</html>

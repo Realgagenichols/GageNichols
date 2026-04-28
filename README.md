@@ -1,4 +1,4 @@
-# Gage Nichols
+# atom
 
 A personal portfolio website for a security engineering leader, styled in the optimistic atomic age (Tomorrowland 1962 / Mission Control / Googie) aesthetic. Single-page React + Vite SPA, deployed as a static site to GitHub Pages.
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Single-page site, single canonical URL.
+  Replace the <loc> below with your actual deployed URL after the first deploy
+  (e.g., https://realgagenichols.github.io/GageNichols/ or your custom domain).
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://realgagenichols.github.io/GageNichols/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -25,6 +25,10 @@
     <meta name="twitter:description" content="Security engineering leader delivering cloud security for 8M+ users." />
     <meta name="twitter:image" content="./og-image.jpg" />
 
+    <!-- Favicon — atom logo SVG, scales perfectly across browser tab sizes -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./favicon.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,6 +36,47 @@
       rel="stylesheet"
     />
     <title>Gage Nichols | Cyber Security Engineer</title>
+
+    <!--
+      JSON-LD Person schema — helps Google show your name, role, and LinkedIn
+      in knowledge panels / rich results. Only sources facts already published
+      on the site (name, title, location, LinkedIn URL); nothing fabricated.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gage Nichols",
+        "jobTitle": "Cyber Security Engineer",
+        "description": "Security engineering leader delivering enterprise cloud security solutions for 8M+ users while building teams and driving compliance initiatives.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Antonio",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Texas at San Antonio"
+        },
+        "knowsAbout": [
+          "Cloud Security",
+          "AWS Multi-Account Architecture",
+          "Cloud Security Posture Management",
+          "Identity and Access Management",
+          "Vulnerability Management",
+          "Incident Response",
+          "Security Automation",
+          "Data Loss Prevention",
+          "SOC 2",
+          "PCI DSS",
+          "Security Leadership"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/gagenichols"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
