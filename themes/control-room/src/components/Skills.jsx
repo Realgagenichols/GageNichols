@@ -3,14 +3,27 @@ import { skills } from '@shared/data.js';
 import { Starburst } from './Decorations.jsx';
 
 /**
+ * Explicit symbol overrides for skills whose default derivation collides
+ * with another tile or produces a non-intuitive abbreviation. Keep small
+ * and named so reviewers can audit each override at a glance.
+ */
+const SYMBOL_OVERRIDES = {
+  'Identity & Access Management (IAM)': 'Id',
+  'Agentic AI Engineering': 'Ai',
+  'Security-First AI Tooling': 'Sf',
+};
+
+/**
  * Build a 1-2 letter "atomic symbol" abbreviation for a skill name.
  *
- * Strategy: prefer the first letters of an explicit acronym (text inside
- * parens like "(IAM)"), then a leading all-caps acronym, then initials of
- * the first two significant words.  Length is clamped to two letters so
- * the tile reads like an element symbol on a periodic table.
+ * Strategy: prefer an explicit override, then the first letters of an
+ * acronym in parens (like "(IAM)"), then a leading all-caps acronym,
+ * then initials of the first two significant words.  Length is clamped
+ * to two letters so the tile reads like an element symbol on a periodic
+ * table.
  */
 function symbolFor(name) {
+  if (SYMBOL_OVERRIDES[name]) return SYMBOL_OVERRIDES[name];
   const parenAcronymMatch = name.match(/\(([A-Z]{2,5})\)/);
   if (parenAcronymMatch) {
     const a = parenAcronymMatch[1];
@@ -37,9 +50,9 @@ function symbolFor(name) {
   return words[0][0] + words[1][0].toLowerCase();
 }
 
-/** Category-driven palette token — coral, gold, turquoise, pink. */
+/** Category-driven palette token — coral, gold, turquoise, pink, violet. */
 function categoryToken(idx) {
-  const tokens = ['coral', 'gold', 'turquoise', 'pink'];
+  const tokens = ['coral', 'gold', 'turquoise', 'pink', 'violet'];
   return tokens[idx % tokens.length];
 }
 

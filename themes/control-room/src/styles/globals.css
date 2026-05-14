@@ -80,6 +80,9 @@ ol {
   --gold-bright: #fcd34d;
   --pink: #f472b6;
   --pink-bright: #f9a8d4;
+  --violet: #a78bfa;
+  --violet-bright: #c4b5fd;
+  --violet-deep: #6d28d9;
 
   /* Text */
   --text: #fef8e7;          /* cream — body text on midnight bg */
@@ -92,6 +95,7 @@ ol {
   --glow-turquoise: 0 0 12px rgba(34, 211, 238, 0.45);
   --glow-coral: 0 0 14px rgba(255, 107, 107, 0.45);
   --glow-gold: 0 0 12px rgba(251, 191, 36, 0.4);
+  --glow-violet: 0 0 12px rgba(167, 139, 250, 0.45);
 
   /* Atom logo CSS variables (consumed by AtomLogo SVG) */
   --atom-orbit: #22d3ee;
@@ -147,6 +151,9 @@ ol {
   --gold-bright: #f59e0b;
   --pink: #db2777;
   --pink-bright: #ec4899;
+  --violet: #7c3aed;
+  --violet-bright: #8b5cf6;
+  --violet-deep: #5b21b6;
 
   --text: #1e293b;          /* deep navy — passes WCAG AA on cream */
   --text-strong: #0f172a;
@@ -157,6 +164,7 @@ ol {
   --glow-turquoise: 0 0 0 0 transparent;
   --glow-coral: 0 0 0 0 transparent;
   --glow-gold: 0 0 0 0 transparent;
+  --glow-violet: 0 0 0 0 transparent;
 
   --atom-orbit: #0891b2;
   --atom-nucleus: #d97706;
@@ -1314,6 +1322,7 @@ main.console {
 .periodic__legend-item--gold .periodic__legend-swatch { background: var(--gold); }
 .periodic__legend-item--turquoise .periodic__legend-swatch { background: var(--turquoise); }
 .periodic__legend-item--pink .periodic__legend-swatch { background: var(--pink); }
+.periodic__legend-item--violet .periodic__legend-swatch { background: var(--violet); }
 
 /* Grid of category panels */
 .periodic__grid {
@@ -1475,6 +1484,16 @@ main.console {
 .element--pink.element--active .element__name,
 .element--pink.element--active .element__number { color: #ffffff; }
 
+.element--violet { border-color: rgba(167, 139, 250, 0.55); }
+.element--violet .element__symbol { color: var(--violet-bright); }
+[data-theme='light'] .element--violet { border-color: rgba(124, 58, 237, 0.55); }
+[data-theme='light'] .element--violet .element__symbol { color: var(--violet); }
+.element--violet.element--active { background: var(--violet); border-color: var(--violet-bright); }
+.element--violet.element--active .element__symbol,
+.element--violet.element--active .element__name,
+.element--violet.element--active .element__number { color: #ffffff; }
+[data-theme='light'] .element--violet.element--active { background: var(--violet-deep); border-color: var(--violet); }
+
 /* Detail panel — dossier of selected element */
 .periodic__detail {
   background: var(--bg-panel-2);
@@ -1526,6 +1545,8 @@ main.console {
 .dossier--turquoise .dossier__chip { background: var(--turquoise); border-color: var(--turquoise-bright); color: #0c1430; }
 [data-theme='light'] .dossier--turquoise .dossier__chip { background: var(--turquoise-deep); border-color: var(--turquoise); color: #ffffff; }
 .dossier--pink .dossier__chip { background: var(--pink); border-color: var(--pink-bright); color: #ffffff; }
+.dossier--violet .dossier__chip { background: var(--violet); border-color: var(--violet-bright); color: #ffffff; }
+[data-theme='light'] .dossier--violet .dossier__chip { background: var(--violet-deep); border-color: var(--violet); color: #ffffff; }
 
 .dossier__chip-num {
   font-family: var(--font-mono);

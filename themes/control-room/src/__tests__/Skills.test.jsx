@@ -27,6 +27,20 @@ describe('Skills (R3)', () => {
     expect(tiles.length).toBe(totalSkills);
   });
 
+  it('renders a unique two-letter symbol on every tile (no collisions)', () => {
+    render(<Skills />);
+    const tiles = screen.getAllByRole('button', { expanded: false });
+    const symbols = tiles.map((tile) => {
+      const symEl = tile.querySelector('.element__symbol');
+      return symEl ? symEl.textContent : '';
+    });
+    const unique = new Set(symbols);
+    expect(unique.size).toBe(symbols.length);
+    // Specifically verify the IAM/IaC disambiguation that prompted the override.
+    expect(symbols).toContain('Id');
+    expect(symbols).toContain('Ia');
+  });
+
   it('opens a dossier with the skill name and category when an element is clicked', async () => {
     render(<Skills />);
     const firstSkill = skills[0].items[0];

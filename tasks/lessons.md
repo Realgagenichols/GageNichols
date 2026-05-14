@@ -59,6 +59,19 @@
 
 **Gradient gotcha:** `<linearGradient>` and `<radialGradient>` `<stop>` elements have known cross-browser bugs where they DON'T re-render when their CSS variables change (the gradient is treated as a cached paint reference). For SVG fills that need to theme, prefer **solid fills with CSS vars** over gradients. If you must have depth, layer two solid-filled paths with different opacities — that themes correctly.
 
+## L6: When removing one inaccurate claim, audit related claims for the same defect
+
+**Source:** Capability Console AI-tile change (2026-05-14). The user flagged the experience bullet "Manage vendor relationships and budget allocation for security tooling…" as not actually true. A corresponding `Vendor & Budget Management` tile in the Capability Console was advertising the same capability from a different angle and had to come out too.
+
+**Pattern:** Inaccurate or aspirational claims rarely appear in a single place. The same capability often shows up across multiple data structures — an experience bullet, a skills/capabilities tile, a headline metric, a project tag. When the user rejects one, the related entries are likely just as inaccurate, but they're easy to miss because the working diff is scoped to the file currently being edited. This is the inverse failure mode of L4: L4 prevents fabrications from going *in*; L6 ensures they all come *out*.
+
+**Rule:**
+- When the user flags a factual claim as inaccurate, immediately search `shared/data.js`, `me/`, and adjacent files for related wording before completing the fix.
+- Surface related matches to the user explicitly rather than silently editing — the user may want the bullet gone but the tile to stay (e.g., if the tile still reflects real capability framed differently), or vice versa. Scope is the user's call.
+- Treat any inaccuracy correction as a trigger for a small audit, not a one-line edit.
+
+**Test:** After removing an inaccurate claim, `grep -i` the keywords of that claim across the codebase. Every remaining match should either be intentional or get flagged to the user.
+
 ## L2: Vite 5.4.x ships transitive vulnerabilities
 
 **Source:** Theme A `npm install` (Section 4)

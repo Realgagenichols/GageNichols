@@ -147,3 +147,24 @@
 
 ### Ready to deploy
 `git push origin main` triggers `.github/workflows/deploy.yml`, which runs the PII gate, builds the site, and publishes to GitHub Pages.
+
+---
+
+## 15. Brownfield change: Capability Console — AI Tile & Symbol Collision Fix
+
+Change folder: `changes/capability-console-ai-tile/`
+Spec delta: `changes/capability-console-ai-tile/specs/R3-skills.md`
+
+- [x] 15.1 Add `SYMBOL_OVERRIDES` map to `themes/control-room/src/components/Skills.jsx` and consult it first in `symbolFor()`. Map IAM → `Id`, Agentic AI Engineering → `Ai`, Security-First AI Tooling → `Sf`. — R3 (Symbol override scenario)
+- [x] 15.2 Add new category "AI & Agentic Engineering" to `shared/data.js` with four items in order: Agentic AI Engineering, Security-First AI Tooling, Spec-Driven Development, Plugin & Skill Authorship. — R3.1
+- [x] 15.3 Add a Vitest assertion to `themes/control-room/src/__tests__/Skills.test.jsx` verifying that every rendered tile has a unique symbol. — R3 (uniqueness scenario)
+- [x] 15.4 Run `npm test` and confirm all suites pass. — 29/29 passing
+- [x] 15.5 Run `npm run lint` if a lint script exists. — N/A (no lint script in package.json)
+- [x] 15.6 Run `npm run build` and confirm the PII scan + build pass. — passed, 50 modules
+- [x] 15.7 Start dev server (`npm run dev`) for user visual inspection — user approved.
+- [x] 15.8 Add `violet` palette token (CSS vars + tile + legend + dossier rules) so the AI category gets a distinct hue instead of wrapping to coral.
+- [x] 15.9 Drop "Made with wonder" from `Footer.jsx` (read like a tool name to the user).
+- [x] 15.10 Drop inaccurate vendor/budget bullet from Lumin Digital experience in `shared/data.js`. Drop the related `Vendor & Budget Management` tile from the Capability Console (L4 audit).
+- [x] 15.11 Capture L6 in `tasks/lessons.md` — when one inaccurate claim is removed, audit related claims for the same defect.
+- [ ] 15.12 On PR merge: merge delta spec into main `SPEC.md`, archive change folder to `changes/archive/2026-05-14-capability-console-ai-tile/`.
+- [ ] 15.13 Commit on branch `feature/capability-console-ai-tile`, push, open PR.
