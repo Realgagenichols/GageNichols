@@ -99,7 +99,6 @@ export const skills = [
       'Team Leadership & Mentorship',
       'Cross-Functional Collaboration',
       'Strategic Planning & Roadmap Development',
-      'Vendor & Budget Management',
       'Project & Program Management',
       'Risk Management & Decision Making',
     ],
@@ -128,6 +127,15 @@ export const skills = [
       'Data Loss Prevention (DLP)',
     ],
   },
+  {
+    category: 'AI & Agentic Engineering',
+    items: [
+      'Agentic AI Engineering',
+      'Security-First AI Tooling',
+      'Spec-Driven Development',
+      'Plugin & Skill Authorship',
+    ],
+  },
 ];
 
 /**
@@ -144,7 +152,6 @@ export const experience = [
       'Supported establishment of an internal IAM team. Provided mentorship, process standardization, and automation workflows',
       'Drive security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms',
       'Partnered with leadership on GRC initiatives, achieving SOC 2 and PCI DSS compliance',
-      'Manage vendor relationships and budget allocation for security tooling, evaluating solutions that deliver ROI while meeting compliance',
     ],
     delivery: [
       'Led deployment of Cloud Security Posture Management (CSPM) across 30+ AWS accounts with 200k+ resources, improving visibility and compliance posture',

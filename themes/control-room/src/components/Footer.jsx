@@ -19,8 +19,7 @@ export function Footer() {
         <strong>{personal.name}</strong>
       </span>
       <span className="footer__line">
-        Atomic Control Room · Build <strong>{year}.A</strong> · Made with
-        wonder
+        Atomic Control Room · Build <strong>{year}.A</strong>
       </span>
       <span className="footer__line">
         Signal terminates at this console. No further channels in service.
