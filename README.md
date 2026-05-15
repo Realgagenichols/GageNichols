@@ -1,6 +1,7 @@
 # atom
 
 A personal portfolio website styled in the optimistic atomic age (Tomorrowland 1962 / Mission Control / Googie) aesthetic. Single-page React + Vite SPA, deployed as a static site to GitHub Pages.
+https://realgagenichols.github.io/GageNichols/
 
 ## Setup
 
