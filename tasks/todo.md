@@ -167,5 +167,6 @@ Spec delta: `changes/capability-console-ai-tile/specs/R3-skills.md`
 - [x] 15.10 Drop inaccurate vendor/budget bullet from Lumin Digital experience in `shared/data.js`. Drop the related `Vendor & Budget Management` tile from the Capability Console (L4 audit).
 - [x] 15.11 Capture L6 in `tasks/lessons.md` — when one inaccurate claim is removed, audit related claims for the same defect.
 - [x] 15.12 Audit Projects section for fabricated content. Found `declassDate()` in `Projects.jsx` generating fake dates per index. Removed the function. Added `date` field to Project typedef in `shared/data.js`. Populated real dates per user input. Reordered: Agentic AI (Current) first, then reverse-chronological. Added new project "Ephemeral VDI Workspace for PCI Data Handling" (Feb 2026).
-- [ ] 15.13 On PR merge: merge delta spec into main `SPEC.md`, archive change folder to `changes/archive/2026-05-14-capability-console-ai-tile/`.
-- [ ] 15.14 Commit Projects-section fixes on branch `feature/capability-console-ai-tile`, push, open PR.
+- [x] 15.13 Merge delta spec into main `SPEC.md` (R3, R3.1, R4 updated; outdated category list cleaned up; project date authenticity scenario added). Archive change folder to `changes/archive/2026-05-18-capability-console-ai-tile/` via `git mv` so history is preserved.
+- [x] 15.14 Commit Projects-section fixes on branch `feature/capability-console-ai-tile`, push.
+- [ ] 15.15 Open PR via the GitHub web UI (gh CLI not available in this environment).

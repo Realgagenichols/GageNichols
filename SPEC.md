@@ -36,13 +36,24 @@ The site SHALL include an "About Me" section with a brief bio, photo/avatar area
 - AND highlights emphasize leadership, mentoring, and strategic impact
 
 #### R3: Skills / Experience Section
-The site SHALL display technical skills and professional experience in a visually engaging format consistent with the active theme variant.
+The site SHALL display technical skills and professional experience in a visually engaging format consistent with the active theme variant. The skills surface is the "Capability Console," a periodic-table-style grid where each capability renders as an element-style tile with a unique two-letter symbol.
 
 ##### Scenario: Skills display
 - GIVEN a visitor views the skills section
 - WHEN the section renders
 - THEN skills are displayed with theme-appropriate visual indicators
-- AND skills are grouped by category (Security Engineering, Cloud/Infrastructure, Leadership & Mentoring, Tools & Platforms)
+- AND skills are grouped by category (Leadership & Strategy, Compliance & Frameworks, Cloud & Infrastructure, Security Operations, AI & Agentic Engineering)
+
+##### Scenario: Unique symbols across the Capability Console
+- GIVEN the Capability Console is rendered
+- WHEN every tile's symbol is collected
+- THEN no two tiles SHALL share the same symbol
+
+##### Scenario: Symbol override for ambiguous derivations
+- GIVEN a skill whose name produces a colliding or non-intuitive symbol under the default `symbolFor()` derivation
+- WHEN `Skills.jsx` renders that tile
+- THEN it SHALL use the value from a `SYMBOL_OVERRIDES` map in preference to the derived value
+- AND the override SHALL be a two-character string
 
 ##### Scenario: Experience timeline
 - GIVEN a visitor views the experience area
@@ -50,14 +61,42 @@ The site SHALL display technical skills and professional experience in a visuall
 - THEN work history is presented with company, role, dates, and brief descriptions
 - AND key metrics (8M+ users, 90+ platforms, 30+ accounts, 200k+ resources) are prominently displayed
 
+#### R3.1: AI & Agentic Engineering category
+
+The Capability Console SHALL include a category named **"AI & Agentic Engineering"** containing the following four items, in order:
+
+1. Agentic AI Engineering (symbol `Ai`)
+2. Security-First AI Tooling (symbol `Sf`)
+3. Spec-Driven Development (symbol `Sd`)
+4. Plugin & Skill Authorship (symbol `Ps`)
+
+The category SHALL render in a visually distinct color (`violet` palette token) so it does not visually wrap into any of the four pre-existing category hues.
+
+##### Scenario: AI category visible in legend and grid
+- GIVEN the Skills section renders
+- WHEN the Capability Console grid and legend are inspected
+- THEN the category "AI & Agentic Engineering" SHALL appear in both
+- AND its four tiles SHALL be rendered, each clickable to open a dossier
+
+##### Scenario: Authenticity guardrail
+- GIVEN each tile in the AI category
+- WHEN its label is examined
+- THEN it SHALL map to real work demonstrated elsewhere in the portfolio (bio, projects, repository structure), with no fabricated capabilities (L4)
+
 #### R4: Projects / Portfolio Section
-The site SHALL showcase selected projects with titles, descriptions, technology tags, and links (demo/repo where available).
+The site SHALL showcase selected projects with titles, descriptions, technology tags, dates, and links (demo/repo where available). Every project entry SHALL include a factual `date` field ("MMM YYYY" for completed work, or "Current" for ongoing work). Project dates SHALL NOT be fabricated or generated from project order (L4).
 
 ##### Scenario: Project cards
 - GIVEN a visitor views the projects section
 - WHEN the section renders
-- THEN at least one project card is displayed with title, description, tech tags, and at least one link
+- THEN at least one project card is displayed with title, description, tech tags, date, and at least one link
 - AND cards use theme-appropriate styling
+
+##### Scenario: Project date authenticity
+- GIVEN any project card on the page
+- WHEN its date stamp is inspected
+- THEN it SHALL come from the `date` field in `shared/data.js`
+- AND that value SHALL be factual per L4 (no decorator-generated dates)
 
 #### R5: Contact Section
 The site SHALL provide a contact section with a link to the owner's LinkedIn profile as the sole contact channel. No email address, phone number, or alternate contact channel SHALL be displayed in the contact section. (GitHub may still appear elsewhere as a project link where relevant, but is not presented as a contact route.)
