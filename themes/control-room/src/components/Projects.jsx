@@ -2,19 +2,12 @@ import { projects } from '@shared/data.js';
 import { Starburst } from './Decorations.jsx';
 
 function fileId(idx) {
-  // FILE-A-001 style identifier — purely decorative
+  // INNOVATION-A-101 style identifier. Purely decorative (L4 allows
+  // obviously-fake placeholders), serves as a "file stamp" Googie motif.
   const letters = 'ABCDEFG';
   const letter = letters[idx % letters.length];
   const num = String(101 + idx).padStart(3, '0');
   return `INNOVATION-${letter}-${num}`;
-}
-
-function declassDate(idx) {
-  // Mock release date — decorative only
-  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  const m = months[(idx * 3 + 4) % 12];
-  const y = 2018 + (idx % 7);
-  return `${m} ${y}`;
 }
 
 /**
@@ -56,7 +49,7 @@ export function Projects() {
 
             <header className="briefing__head">
               <span className="briefing__file-id">{fileId(idx)}</span>
-              <span className="briefing__date">{declassDate(idx)}</span>
+              <span className="briefing__date">{p.date}</span>
             </header>
 
             <h3 className="briefing__title">{p.title}</h3>
