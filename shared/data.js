@@ -44,6 +44,7 @@
 /**
  * @typedef {Object} Project
  * @property {string} title
+ * @property {string} date - Real date this work landed (e.g., "Feb 2026") or "Current" for ongoing work. Must be factual (L4).
  * @property {string} summary - One-sentence description
  * @property {string} description - Longer paragraph
  * @property {string[]} tags - Tech / domain tags
@@ -221,7 +222,30 @@ export const education = [
  */
 export const projects = [
   {
+    title: 'Agentic AI for Security Engineering',
+    date: 'Current',
+    summary: 'Leveraging modern AI tooling and development practices to accelerate security engineering velocity.',
+    description:
+      'Recent focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. This portfolio site is itself an example, built collaboratively with AI-driven development to ship faster without sacrificing quality.',
+    tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
+    impact: 'Demonstrating that disciplined process and modern AI tooling compound engineering output.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/gagenichols' },
+    ],
+  },
+  {
+    title: 'Ephemeral VDI Workspace for PCI Data Handling',
+    date: 'Feb 2026',
+    summary: 'Clean-room VDI environment for PCI data. A weekly pipeline builds a golden image, and each user session runs in an ephemeral VDI instance provisioned from it.',
+    description:
+      'Developed a secure workspace for handling PCI cardholder data using virtual desktop infrastructure (VDI). A pipeline builds a golden image on a weekly cadence, and each user session runs in an ephemeral VDI instance provisioned from that image. Every session begins from a known-clean state.',
+    tags: ['PCI DSS', 'VDI', 'Ephemeral Infrastructure', 'Golden Image Pipeline', 'Compliance Engineering'],
+    impact: 'Established a clean-room pattern for PCI data handling. Each session starts from a freshly built golden image, with no carryover state between rebuilds.',
+    links: [],
+  },
+  {
     title: 'Enterprise Cloud Security Posture Management',
+    date: 'Nov 2025',
     summary: 'CSPM rollout across 30+ AWS accounts protecting 200k+ cloud resources.',
     description:
       'Led the end-to-end deployment of a Cloud Security Posture Management solution across a multi-account AWS environment. Designed onboarding workflows, integrated with existing alerting infrastructure, and partnered with engineering leadership on remediation processes.',
@@ -230,16 +254,8 @@ export const projects = [
     links: [],
   },
   {
-    title: 'Internal Data Loss Prevention (DLP) Platform',
-    summary: 'Endpoint DLP deployed to 100+ devices, fulfilling PCI compliance for sensitive data.',
-    description:
-      'Designed and implemented an internal DLP tool to protect sensitive data (including primary account numbers). Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
-    tags: ['DLP', 'PCI DSS', 'Endpoint Security', 'Compliance Engineering'],
-    impact: 'Reduced compliance risk for sensitive data across 100+ endpoints and fulfilled PCI DSS control requirements.',
-    links: [],
-  },
-  {
     title: 'IAM Team & Process Standardization',
+    date: 'May 2025',
     summary: 'Helped stand up an internal IAM team. Mentorship, process design, automation workflows.',
     description:
       'Supported the formation of an internal Identity & Access Management team. Provided mentorship to new team members, helped establish process standardization, and contributed automation workflows that reduced manual provisioning effort.',
@@ -248,24 +264,24 @@ export const projects = [
     links: [],
   },
   {
+    title: 'Internal Data Loss Prevention (DLP) Platform',
+    date: 'Mar 2025',
+    summary: 'Endpoint DLP deployed to 100+ devices, fulfilling PCI compliance for sensitive data.',
+    description:
+      'Designed and implemented an internal DLP tool to protect sensitive data (including primary account numbers). Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
+    tags: ['DLP', 'PCI DSS', 'Endpoint Security', 'Compliance Engineering'],
+    impact: 'Reduced compliance risk for sensitive data across 100+ endpoints and fulfilled PCI DSS control requirements.',
+    links: [],
+  },
+  {
     title: 'Enterprise Vulnerability Management Program',
+    date: 'Aug 2022',
     summary: 'Led a cross-functional vuln management team to consistent SLA compliance.',
     description:
       'Built workflows, escalation procedures, and stakeholder communication patterns for an enterprise vulnerability management program. Coordinated assessments across engineering teams while balancing risk reduction with development velocity.',
     tags: ['Vulnerability Management', 'Team Lead', 'SLA', 'Cross-Functional'],
     impact: 'Achieved consistent SLA compliance for high/critical vulnerabilities and reduced average remediation time.',
     links: [],
-  },
-  {
-    title: 'Agentic AI for Security Engineering',
-    summary: 'Leveraging modern AI tooling and development practices to accelerate security engineering velocity.',
-    description:
-      'Recent focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. This portfolio site is itself an example, built collaboratively with AI-driven development to ship faster without sacrificing quality.',
-    tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
-    impact: 'Demonstrating that disciplined process + modern AI tooling compounds engineering output.',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/gagenichols' },
-    ],
   },
 ];
 
