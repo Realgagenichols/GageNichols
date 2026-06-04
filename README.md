@@ -30,7 +30,7 @@ The site must never expose email, phone, or downloadable resume. The scanner run
 npm run pii:scan
 ```
 
-It scans both source (with broad heuristics) and `dist/` (with targeted strings) so minified-bundle false positives don't pollute results. See `tasks/lessons.md` L1 for the scan-tier strategy.
+It scans both source (with broad heuristics) and `dist/` (with targeted strings) so minified-bundle false positives don't pollute results.
 
 ## Deploy to GitHub Pages
 
@@ -64,12 +64,7 @@ atom-website/
 │       └── components/    # AtomLogo, Decorations, Nav, Hero, About, Skills, Experience, Projects, Contact, Footer
 ├── scripts/
 │   └── scan-pii.mjs       # PII regex scanner (CI gate)
-├── me/                    # Personal reference (gitignored — never pushed, never bundled)
-├── SPEC.md                # Source of truth for requirements (RFC 2119 + Given/When/Then)
-├── tasks/
-│   ├── todo.md            # Implementation plan with checkboxes
-│   └── lessons.md         # Patterns and pitfalls captured during the build
-└── docs/design/           # Design rationale documents
+└── me/                    # Personal reference (gitignored, never pushed, never bundled)
 ```
 
 ## Editing Site Content
