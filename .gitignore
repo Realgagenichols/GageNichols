@@ -38,6 +38,15 @@ yarn-error.log*
 coverage/
 .nyc_output/
 
+# AI / development workflow artifacts, kept locally for development but
+# excluded from the public repo (Claude instructions, spec, task tracking,
+# brownfield change folders, and design rationale docs).
+CLAUDE.md
+SPEC.md
+tasks/
+changes/
+docs/design/
+
 # PRIVACY: the entire me/ directory is excluded from git.
 # It contains the resume PDF (with email + phone) and personal reference material
 # that must NEVER be pushed to a public repo.  The portrait used by the site lives
