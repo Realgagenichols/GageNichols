@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="themes/control-room/public/og-image.jpg" alt="Atomic-age portrait of Gage Nichols, surrounded by sputniks and starbursts" width="360" />
+<a href="https://realgagenichols.github.io/GageNichols/">
+  <img src="docs/media/hero.gif" alt="Animated tour of the site: atomic-age hero, Periodic Table of Capabilities, and the dark-to-light theme flip" width="760" />
+</a>
 
 # ⚛️ atom
 
