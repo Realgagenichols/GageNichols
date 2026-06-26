@@ -63,8 +63,8 @@
 export const personal = {
   name: 'Gage Nichols',
   title: 'Cyber Security Engineer',
-  tagline: 'Cloud & Security Operations · Strategic Risk Management',
-  location: 'San Antonio, TX',
+  tagline: 'Cloud & Security Engineering · Strategic Risk Management',
+  location: 'Texas, US',
 };
 
 /**
@@ -72,21 +72,24 @@ export const personal = {
  * @type {string[]}
  */
 export const bio = [
-  'Security engineering leader delivering enterprise cloud security solutions for 8M+ users while building teams and driving compliance initiatives.',
+  'Security engineering leader who builds and mentors teams, drives compliance programs, and delivers enterprise cloud security at scale.',
   'Combines technical depth with strategic leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering) with recent focus on cloud-native security capabilities and agentic AI for security velocity.',
   'Passionate about mentoring engineers, standardizing security processes, and growing into security leadership.',
 ];
 
 /**
- * Headline highlights — surfaced near the top of every theme.
+ * Headline highlights — rendered in the "Meet the Engineer" card strip.
+ * These are personal facts about the owner (tenure, leadership, credentials, focus areas),
+ * NOT employer-scale metrics. The employer-scale numbers (8M+ users, 90+ platforms,
+ * 30+ accounts, 200k+ resources) live in the experience timeline, where a specific role
+ * gives them context. Keeping them out of here avoids implying they are personal stats.
  * @type {Highlight[]}
  */
 export const highlights = [
-  { label: 'Users Protected', value: '8M+', caption: 'across enterprise cloud infrastructure' },
-  { label: 'Client Platforms', value: '90+', caption: 'multi-account AWS environments' },
-  { label: 'AWS Accounts', value: '30+', caption: 'with 200k+ resources under CSPM' },
-  { label: 'Compliance', value: 'SOC 2 · PCI DSS', caption: 'achieved in partnership with leadership' },
   { label: 'Experience', value: '5+ years', caption: 'across the security lifecycle' },
+  { label: 'Leadership', value: 'Team Lead', caption: 'led vuln management, team mentor' },
+  { label: 'Compliance', value: 'SOC 2 · PCI DSS', caption: 'achieved in partnership with leadership' },
+  { label: 'AI Engineering', value: 'Agentic AI', caption: 'security-first tooling for engineering velocity' },
 ];
 
 /**

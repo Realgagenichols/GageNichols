@@ -213,18 +213,28 @@ export function OrbitalFrame({
       style={style}
       {...labelProps}
     >
-      <g transform="translate(100 100)" fill="none" stroke={color} strokeWidth="1.4">
-        <ellipse rx="92" ry="36" />
-        <ellipse rx="92" ry="36" transform="rotate(60)" />
-        <ellipse rx="92" ry="36" transform="rotate(-60)" />
-      </g>
-      {electrons && (
-        <g fill={electronColor || color}>
-          <circle cx="192" cy="100" r="4" />
-          <circle cx="54" cy="34" r="3.2" />
-          <circle cx="146" cy="166" r="3.2" />
+      {/* Orbits and electrons share the same translate(100 100) origin.  Each
+          electron sits at a tilted orbit's own vertex (cx = ±rx, cy = 0) inside
+          a matching rotate() group, so it always lands exactly on the ring.
+          Opposite vertices are used to spread the three dots symmetrically. */}
+      <g transform="translate(100 100)">
+        <g fill="none" stroke={color} strokeWidth="1.4">
+          <ellipse rx="92" ry="36" />
+          <ellipse rx="92" ry="36" transform="rotate(60)" />
+          <ellipse rx="92" ry="36" transform="rotate(-60)" />
         </g>
-      )}
+        {electrons && (
+          <g fill={electronColor || color}>
+            <circle cx="92" cy="0" r="4" />
+            <g transform="rotate(60)">
+              <circle cx="-92" cy="0" r="3.2" />
+            </g>
+            <g transform="rotate(-60)">
+              <circle cx="-92" cy="0" r="3.2" />
+            </g>
+          </g>
+        )}
+      </g>
     </svg>
   );
 }
