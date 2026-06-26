@@ -2,6 +2,4 @@
 User-agent: *
 Allow: /
 
-# If you set a custom domain, update the Sitemap line below to reference it.
-# For the default GitHub Pages URL, the sitemap is reachable at the same origin.
-Sitemap: ./sitemap.xml
+Sitemap: https://hiregage.com/sitemap.xml
