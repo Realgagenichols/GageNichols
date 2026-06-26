@@ -48,7 +48,7 @@ export function Contact() {
               />
               <span className="intercom__speaker-label">All-Points Bulletin</span>
               <p className="intercom__speaker-text">
-                <strong>Hello, friend.</strong> Reach the operator on LinkedIn for
+                <strong>Hello, friend.</strong> Reach me on LinkedIn for
                 inbound transmissions.
               </p>
               <span className="intercom__no-channels">

@@ -1198,9 +1198,15 @@ main.console {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1080px) {
   .punch-cards {
-    grid-template-columns: repeat(3, 1fr);
+    /* four personal-highlight cards sit on a single desktop row */
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .punch-card__value {
+    /* tighter value type so longer values (e.g. "SOC 2 · PCI DSS")
+       fit the narrower 4-up cards without ugly wrapping */
+    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
   }
 }
 
@@ -1905,6 +1911,12 @@ main.console {
   padding: 24px 22px 22px;
   display: grid;
   gap: 14px;
+  /* Cards are stretched to equal height by the projects grid. Without this,
+     the grid's auto rows stretch to absorb the extra height, which in turn
+     stretches flex children (tag pills, link buttons) taller than their text
+     and pins the text to the top. Packing rows to the start keeps every row at
+     its natural height and leaves any slack at the card's bottom. */
+  align-content: start;
   overflow: hidden;
   transition: border-color 220ms, transform 220ms, box-shadow 220ms;
   box-shadow: var(--shadow-card);

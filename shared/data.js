@@ -233,7 +233,7 @@ export const projects = [
     tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
     impact: 'Demonstrating that disciplined process and modern AI tooling compound engineering output.',
     links: [
-      { label: 'GitHub', url: 'https://github.com/gagenichols' },
+      { label: 'GitHub', url: 'https://github.com/realgagenichols' },
     ],
   },
   {
