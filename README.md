@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="themes/control-room/public/og-image.jpg" alt="Atomic-age portrait of Gage Nichols, surrounded by sputniks and starbursts" width="360" />
-
-# ⚛️ atom
+# ⚛️ Gage Nichols
 
 ### A personal portfolio for the optimistic atomic age
 
@@ -23,9 +21,9 @@
 
 ---
 
-> A single-page React + Vite SPA, deployed as a static site to GitHub Pages. It positions a
-> security engineering leader for lead and manager roles, and it does so with starbursts,
-> orbiting electrons, and a Periodic Table of Capabilities. Built to stop a recruiter mid-scroll.
+> A single-page React + Vite SPA, deployed as a static site to GitHub Pages. The interface is an
+> atomic-age design system, starbursts, orbiting electrons, and a Periodic Table of Capabilities,
+> with all content driven from a single data file.
 
 <br />
 
@@ -53,22 +51,6 @@ moods, one localStorage toggle:
 Visual motifs: an animated atom logo with three orbiting electrons, sputniks, boomerangs,
 parabolic arches, and a periodic table that doubles as the skills section. Scale and elegance
 do the talking.
-
-<br />
-
-## 🎯 What it says
-
-The content targets security lead and manager roles, and every section is anchored by real
-headline metrics:
-
-<div align="center">
-
-| 👥 Users protected | 🛰️ Client platforms | ☁️ AWS accounts | 📋 Compliance |
-|:---:|:---:|:---:|:---:|
-| **8M+** | **90+** | **30+** | **SOC 2 · PCI DSS** |
-| enterprise cloud | multi-account AWS | 200k+ resources under CSPM | with leadership |
-
-</div>
 
 <br />
 
@@ -100,7 +82,7 @@ npm test            # Vitest across workspaces
 A React + Vite npm-workspaces monorepo: one deployable theme plus a shared content and hooks layer.
 
 ```
-atom-website/
+GageNichols/
 ├── shared/                  # Content + reusable React primitives
 │   ├── data.js              # ← single source of truth (bio, skills, projects, experience)
 │   ├── assets/              # portrait.jpg + og-image.jpg (build-bundled)
