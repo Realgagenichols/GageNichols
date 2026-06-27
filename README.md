@@ -153,11 +153,7 @@ npm run pii:scan
 push to main  →  npm ci  →  pii:scan (gate)  →  build  →  upload dist/  →  GitHub Pages
 ```
 
-To deploy your own fork:
-
-1. Push to a GitHub repo.
-2. **Settings → Pages → Source: GitHub Actions.**
-3. The next push to `main` ships it to `https://<your-username>.github.io/<repo>/`.
+The built site is served at [hiregage.com](https://hiregage.com) via a custom domain (`CNAME`).
 
 <br />
 
