@@ -8,7 +8,7 @@
 
 <br />
 
-[![Live Site](https://img.shields.io/badge/visit-the_site-22d3ee?style=for-the-badge&logo=github&logoColor=0c1430)](https://realgagenichols.github.io/GageNichols/)
+[![Live Site](https://img.shields.io/badge/visit-the_site-22d3ee?style=for-the-badge&logo=github&logoColor=0c1430)](https://hiregage.com)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/realgagenichols/GageNichols/deploy.yml?style=for-the-badge&label=deploy&color=ff6b6b)](https://github.com/realgagenichols/GageNichols/actions/workflows/deploy.yml)
 
 ![React](https://img.shields.io/badge/React-18.3-22d3ee?style=flat-square&logo=react&logoColor=white)
@@ -166,7 +166,5 @@ To deploy your own fork:
 <div align="center">
 
 Built with React, Vite, and a healthy respect for the year 1962.
-
-<sub><a href="SPEC.md">SPEC.md</a> is the source of truth · requirements use RFC 2119 + Given/When/Then scenarios</sub>
 
 </div>
