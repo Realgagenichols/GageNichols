@@ -6,6 +6,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { projects } from '@shared/data.js';
 import { Projects } from '../components/Projects.jsx';
 
@@ -101,5 +102,54 @@ describe('Projects (R4)', () => {
         expect(text, `"${title}" summary/impact should not restate metric ${token}`).not.toMatch(token);
       }
     }
+  });
+
+  // R4 (changes/tollbooth-case-study): PyPI link + MIT tags on the OSS cards.
+  it('renders the tollbooth PyPI link and MIT on the open-source cards', () => {
+    render(<Projects />);
+    const pypi = screen
+      .getAllByRole('link', { name: /pypi/i })
+      .filter((el) => el.getAttribute('href') === 'https://pypi.org/project/mcp-tollbooth/');
+    expect(pypi.length, 'no PyPI link').toBeGreaterThan(0);
+    expect(pypi[0]).toHaveAttribute('target', '_blank');
+    expect(pypi[0].getAttribute('rel') ?? '').toMatch(/noopener/);
+
+    for (const p of projects.filter((proj) => proj.kind === 'oss')) {
+      expect(p.tags, `${p.title} missing MIT tag`).toContain('MIT');
+    }
+  });
+});
+
+// R4.1 (changes/tollbooth-case-study): flagship case study, expand-in-place.
+describe('Projects case study (R4.1)', () => {
+  const heads = ['The problem', 'The approach', 'Key decisions', 'Outcome'];
+
+  it('is collapsed by default with a toggle control', () => {
+    render(<Projects />);
+    const toggle = screen.getByRole('button', { name: /read the case study/i });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    for (const h of heads) {
+      expect(screen.queryByText(h)).not.toBeInTheDocument();
+    }
+  });
+
+  it('reveals the case-study sections when toggled', async () => {
+    render(<Projects />);
+    const toggle = screen.getByRole('button', { name: /read the case study/i });
+    await userEvent.click(toggle);
+
+    const expanded = screen.getByRole('button', { name: /close case study/i });
+    expect(expanded).toHaveAttribute('aria-expanded', 'true');
+    for (const h of heads) {
+      expect(screen.getByText(h)).toBeInTheDocument();
+    }
+  });
+
+  it('shows no toggle on projects without a case study', () => {
+    render(<Projects />);
+    // Exactly one project carries a caseStudy (tollbooth), so exactly one toggle exists.
+    const withCaseStudy = projects.filter((p) => Array.isArray(p.caseStudy) && p.caseStudy.length);
+    expect(withCaseStudy).toHaveLength(1);
+    expect(screen.getAllByRole('button', { name: /read the case study/i })).toHaveLength(1);
   });
 });

@@ -59,6 +59,7 @@
  * @property {string[]} tags - Tech / domain tags
  * @property {string} impact - What it achieved
  * @property {Array<{label: string, url: string}>} links - External links (no email)
+ * @property {Array<{heading: string, body?: string, points?: string[]}>} [caseStudy] - Optional flagship deep-dive (expand-in-place). `body` renders as a paragraph, `points` as a bulleted list. Sourced + factual (L4), no PII (R8).
  */
 
 /**
@@ -395,9 +396,35 @@ export const projects = [
       'A transparent MCP proxy that enforces policy on every tool call and result flowing between an AI agent (Claude Code, Cursor, custom clients) and its MCP servers.',
     description:
       'A security gateway for agentic AI: tollbooth sits between an MCP client and its servers and applies policy to every tool call and response, giving AI-agent deployments a single, auditable enforcement point instead of trusting each integration.',
-    tags: ['MCP', 'AI Agent Security', 'Policy Enforcement', 'Python', 'Open Source'],
+    tags: ['MCP', 'AI Agent Security', 'Policy Enforcement', 'Python', 'Open Source', 'MIT'],
     impact: 'A policy-enforcement and audit point for the fast-growing, under-secured surface of AI-agent tool use.',
-    links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/tollbooth' }],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/Realgagenichols/tollbooth' },
+      { label: 'PyPI', url: 'https://pypi.org/project/mcp-tollbooth/' },
+    ],
+    caseStudy: [
+      {
+        heading: 'The problem',
+        body: "An AI agent's tool traffic, filesystem writes, shell commands, web fetches, API calls, flows to its tools unmediated. There is no control point to deny a dangerous call, stop a secret from leaking out in a tool argument, redact a credential before it reaches the model's context, or produce a compliance-grade record of what the agent actually did.",
+      },
+      {
+        heading: 'The approach',
+        body: 'tollbooth is a transparent MCP proxy: the client points at one gateway, which wraps the real upstream servers, so the config file becomes the security boundary. Every tool call and result runs a pipeline, policy, then DLP, then plugins, with a tamper-evident audit log recording each decision. Absent any policy, behavior is identical to a direct connection.',
+      },
+      {
+        heading: 'Key decisions',
+        points: [
+          'Fail-closed by default: any internal error denies the call rather than letting it through.',
+          'Direction-aware DLP: block secrets trying to leave in a tool argument (the exfil path), but redact credentials in results in place so the agent keeps working. A control people disable to get work done protects nothing.',
+          'Tamper-evident audit: hash-chained JSONL so `audit verify` proves the log was not edited, and the raw secret value never appears in it.',
+          'Namespaced tool routing through a mapping table rather than string-splitting, since server names can contain underscores.',
+        ],
+      },
+      {
+        heading: 'Outcome',
+        body: 'Published to PyPI as `mcp-tollbooth`, MIT licensed, with 371 passing tests. A single config turns an unmediated agent into a governed one: a firewall, DLP, and audit layer for the fast-growing and largely unsecured surface of AI-agent tool use.',
+      },
+    ],
   },
   {
     kind: 'oss',
@@ -407,7 +434,7 @@ export const projects = [
       'A rule-based DLP hook for Claude Code that classifies files before the AI reads them and blocks sensitive data, deterministic, no LLM.',
     description:
       'Intercepts Claude Code reads with a pre-tool hook and classifies files into a four-tier policy (Restricted to Public) using regex, keyword, metadata, and structure rules. Blocks restricted files, caches classifications in macOS extended attributes, and ships pluggable rule packs, distributed as a Claude Code plugin.',
-    tags: ['DLP', 'Claude Code Plugin', 'Deterministic Classification', 'Python', 'Open Source'],
+    tags: ['DLP', 'Claude Code Plugin', 'Deterministic Classification', 'Python', 'Open Source', 'MIT'],
     impact: 'A deterministic guardrail against regulated-data exposure during AI-assisted development.',
     links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/claude-dlp-guard' }],
   },
@@ -419,7 +446,7 @@ export const projects = [
       'A localhost web app to launch, manage, and monitor multiple Claude Code sessions from the browser.',
     description:
       'Single-process FastAPI + WebSockets app that drives Claude child processes via asyncio with an aiosqlite store. Bound to loopback with defense-in-depth middleware that rejects non-local clients, plus a fake-Claude harness for end-to-end UI testing without burning tokens.',
-    tags: ['FastAPI', 'WebSockets', 'asyncio', 'Local-First Security', 'Open Source'],
+    tags: ['FastAPI', 'WebSockets', 'asyncio', 'Local-First Security', 'Open Source', 'MIT'],
     impact: 'Production-grade local tooling: loopback-only by default, requirements-traced tests, and a clean subprocess lifecycle.',
     links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/mission-control' }],
   },

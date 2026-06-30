@@ -2114,6 +2114,96 @@ main.console {
   color: #ffffff;
 }
 
+/* Flagship case study — expand-in-place (R4.1). The card spans the full grid
+   width while open so the surrounding row is not distorted. */
+.briefing--expanded {
+  grid-column: 1 / -1;
+}
+
+.briefing__case-toggle {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  background: none;
+  border: 1.5px solid var(--coral);
+  padding: 7px 14px;
+  border-radius: var(--pill-radius);
+  cursor: pointer;
+  transition: background 160ms, color 160ms;
+}
+.briefing__case-toggle:hover,
+.briefing__case-toggle:focus-visible {
+  background: var(--coral);
+  color: #06283b;
+}
+[data-theme='light'] .briefing__case-toggle {
+  color: var(--coral-deep);
+  border-color: var(--coral-deep);
+}
+[data-theme='light'] .briefing__case-toggle:hover,
+[data-theme='light'] .briefing__case-toggle:focus-visible {
+  background: var(--coral-deep);
+  color: #ffffff;
+}
+
+.case-study {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--turquoise) 30%, transparent);
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 760px) {
+  .case-study {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.case-study__heading {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--turquoise-bright);
+  margin-bottom: 8px;
+}
+[data-theme='light'] .case-study__heading {
+  color: var(--turquoise-deep);
+}
+
+.case-study__body {
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.case-study__points {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.case-study__points li {
+  position: relative;
+  padding-left: 18px;
+}
+.case-study__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  background: var(--coral);
+  border-radius: 50%;
+}
+
 /* =========================================================================
    CONTACT — Telstar control card
    ========================================================================= */

@@ -1,3 +1,4 @@
+import { useId, useState } from 'react';
 import { projects } from '@shared/data.js';
 import { Starburst } from './Decorations.jsx';
 
@@ -10,11 +11,36 @@ function fileId(idx) {
   return `INNOVATION-${letter}-${num}`;
 }
 
+/** The expand-in-place case-study deep-dive (R4.1). */
+function CaseStudy({ sections, id }) {
+  return (
+    <div className="case-study" id={id}>
+      {sections.map((s) => (
+        <div className="case-study__section" key={s.heading}>
+          <h4 className="case-study__heading">{s.heading}</h4>
+          {s.body && <p className="case-study__body">{s.body}</p>}
+          {s.points && (
+            <ul className="case-study__points">
+              {s.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /** One briefing card. `idx` drives only the decorative file-id stamp. */
 function BriefingCard({ project, idx }) {
+  const [open, setOpen] = useState(false);
+  const caseStudyId = useId();
+  const hasCaseStudy = Array.isArray(project.caseStudy) && project.caseStudy.length > 0;
+
   return (
     <article
-      className="briefing"
+      className={`briefing${open ? ' briefing--expanded' : ''}`}
       tabIndex={0}
       aria-label={`${project.title}, featured innovation`}
     >
@@ -59,6 +85,21 @@ function BriefingCard({ project, idx }) {
             </a>
           ))}
         </div>
+      )}
+
+      {hasCaseStudy && (
+        <>
+          <button
+            type="button"
+            className="briefing__case-toggle"
+            aria-expanded={open}
+            aria-controls={open ? caseStudyId : undefined}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? 'Close case study' : 'Read the case study'} &rarr;
+          </button>
+          {open && <CaseStudy sections={project.caseStudy} id={caseStudyId} />}
+        </>
       )}
     </article>
   );
