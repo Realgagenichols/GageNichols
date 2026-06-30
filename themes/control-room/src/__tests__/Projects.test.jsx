@@ -45,4 +45,24 @@ describe('Projects (R4)', () => {
       expect(el.getAttribute('rel') ?? '').toMatch(/noopener/);
     }
   });
+
+  // R3.2 (changes/section-content-differentiation): a project card that shares an
+  // accomplishment with an Experience bullet describes the technical approach and
+  // does NOT restate the headline metric Experience already carries.
+  it('does not restate experience headline metrics in overlapping project cards', () => {
+    const overlapping = [
+      'Enterprise Cloud Security Posture Management',
+      'Internal Data Loss Prevention (DLP) Platform',
+      'Enterprise Vulnerability Management Program',
+    ];
+    const metricTokens = [/\b30\+/, /\b200k\+/, /\b100\+/];
+    for (const title of overlapping) {
+      const project = projects.find((p) => p.title === title);
+      expect(project, `project "${title}" not found`).toBeTruthy();
+      const text = `${project.summary} ${project.impact}`;
+      for (const token of metricTokens) {
+        expect(text, `"${title}" summary/impact should not restate metric ${token}`).not.toMatch(token);
+      }
+    }
+  });
 });

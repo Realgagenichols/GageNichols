@@ -122,7 +122,7 @@ export const skills = [
       {
         name: 'Identity & Access Management (IAM)',
         detail:
-          'Helped stand up an internal IAM team, contributing mentorship, process standardization, and automation that cut manual provisioning.',
+          'Designs access management and provisioning automation, including SSO and SCIM integrations, standardizing how identities and entitlements are granted and reviewed.',
       },
       {
         name: 'Infrastructure as Code (IaC)',
@@ -196,17 +196,18 @@ export const skills = [
     items: [
       {
         name: 'SOC 2',
-        detail: 'Partnered with leadership on GRC initiatives that achieved SOC 2 compliance.',
+        detail:
+          'Contributed the control evidence and audit readiness behind an achieved SOC 2 compliance.',
       },
       {
         name: 'PCI DSS',
         detail:
-          'Fulfilled PCI DSS requirements through the endpoint DLP platform and the clean-room ephemeral VDI workspace for cardholder data.',
+          'Built cardholder-data controls, endpoint DLP and a clean-room VDI workspace, that fulfilled PCI DSS requirements.',
       },
       {
         name: 'GRC',
         detail:
-          'Partnered with leadership on GRC programs achieving SOC 2 and PCI DSS compliance.',
+          'Partners with leadership on governance and risk programs, mapping controls and driving security posture across the org.',
       },
     ],
   },
@@ -216,7 +217,7 @@ export const skills = [
       {
         name: 'Team Leadership & Mentorship',
         detail:
-          'Mentors engineers and supported standing up an internal IAM team with process standardization and automation.',
+          'Mentors engineers and embedded with a newly formed IAM team to help it reach operational readiness.',
       },
       {
         name: 'Leading Cross-Functional Initiatives',
@@ -248,7 +249,7 @@ export const experience = [
     start: '2023-08',
     end: 'Present',
     leadership: [
-      'Supported establishment of an internal IAM team. Provided mentorship, process standardization, and automation workflows',
+      'Embedded with a newly formed IAM team for six months to help it reach operational readiness, focusing on automation and provisioning standardization while the team hired for capacity',
       'Drive security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms',
       'Partnered with leadership on GRC initiatives, achieving SOC 2 and PCI DSS compliance',
     ],
@@ -344,41 +345,41 @@ export const projects = [
   {
     title: 'Enterprise Cloud Security Posture Management',
     date: 'Nov 2025',
-    summary: 'CSPM rollout across 30+ AWS accounts protecting 200k+ cloud resources.',
+    summary: 'Designed the account-onboarding, alerting, and remediation workflows behind a multi-account CSPM program.',
     description:
       'Led the end-to-end deployment of a Cloud Security Posture Management solution across a multi-account AWS environment. Designed onboarding workflows, integrated with existing alerting infrastructure, and partnered with engineering leadership on remediation processes.',
     tags: ['AWS', 'CSPM', 'Multi-Account', 'Compliance', 'Leadership'],
-    impact: 'Improved cloud visibility and compliance posture across 30+ accounts and 200k+ resources serving 8M+ end users.',
+    impact: 'Gave engineering leadership a repeatable onboarding and remediation process, turning posture findings into tracked, owned work.',
     links: [],
   },
   {
     title: 'IAM Team & Process Standardization',
     date: 'May 2025',
-    summary: 'Helped stand up an internal IAM team. Mentorship, process design, automation workflows.',
+    summary: 'Embedded with a newly spun-out IAM team to build the provisioning automation and SSO/SCIM integrations that got them operational.',
     description:
-      'Supported the formation of an internal Identity & Access Management team. Provided mentorship to new team members, helped establish process standardization, and contributed automation workflows that reduced manual provisioning effort.',
-    tags: ['IAM', 'Team Building', 'Mentorship', 'Process Design'],
-    impact: 'Established a sustainable IAM function with documented processes and automation to support enterprise scale.',
+      'When Identity & Access Management spun out of engineering into its own team, embedded with them for six months to help reach operational readiness. Focused on automation: standardized provisioning, integrated SSO and SCIM-based provisioning, and documented runbooks that cut manual effort while the team hired for capacity.',
+    tags: ['IAM', 'SSO / SCIM', 'Process Design', 'Automation'],
+    impact: 'Left the team with repeatable provisioning, SSO/SCIM integrations, and automation that cut manual effort as they scaled.',
     links: [],
   },
   {
     title: 'Internal Data Loss Prevention (DLP) Platform',
     date: 'Mar 2025',
-    summary: 'Endpoint DLP deployed to 100+ devices, fulfilling PCI compliance for sensitive data.',
+    summary: 'Built a rule-based DLP capability for sensitive data, from classification through audit reporting.',
     description:
       'Designed and implemented an internal DLP tool to protect sensitive data (including primary account numbers). Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
     tags: ['DLP', 'PCI DSS', 'Endpoint Security', 'Compliance Engineering'],
-    impact: 'Reduced compliance risk for sensitive data across 100+ endpoints and fulfilled PCI DSS control requirements.',
+    impact: 'Mapped detection rules to PCI controls and produced the reporting auditors needed, closing a compliance gap for cardholder data.',
     links: [],
   },
   {
     title: 'Enterprise Vulnerability Management Program',
     date: 'Aug 2022',
-    summary: 'Led a cross-functional vuln management team to consistent SLA compliance.',
+    summary: 'Built the workflows, escalation paths, and stakeholder communication for an enterprise vuln management program.',
     description:
       'Built workflows, escalation procedures, and stakeholder communication patterns for an enterprise vulnerability management program. Coordinated assessments across engineering teams while balancing risk reduction with development velocity.',
     tags: ['Vulnerability Management', 'Team Lead', 'SLA', 'Cross-Functional'],
-    impact: 'Achieved consistent SLA compliance for high/critical vulnerabilities and reduced average remediation time.',
+    impact: 'Gave the org a predictable triage-to-remediation pipeline that balanced risk reduction against development velocity.',
     links: [],
   },
 ];
