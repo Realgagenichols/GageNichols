@@ -52,7 +52,8 @@
 /**
  * @typedef {Object} Project
  * @property {string} title
- * @property {string} date - Real date this work landed (e.g., "Feb 2026") or "Current" for ongoing work. Must be factual (L4).
+ * @property {'work'|'oss'} kind - 'work' = proprietary accomplishment (no public code); 'oss' = public repo (carries a GitHub link in `links`). Drives the Projects group split.
+ * @property {string} date - Real date this work landed (e.g., "Feb 2026") or "Current" for ongoing work. Must be factual (L4). For 'oss', the repo creation month.
  * @property {string} summary - One-sentence description
  * @property {string} description - Longer paragraph
  * @property {string[]} tags - Tech / domain tags
@@ -71,7 +72,7 @@
 export const personal = {
   name: 'Gage Nichols',
   title: 'Cyber Security Engineer',
-  tagline: 'Cloud & Security Engineering · Strategic Risk Management',
+  tagline: 'Cloud Security at Scale · Security Tooling for AI Agents',
   location: 'Texas, US',
 };
 
@@ -80,7 +81,7 @@ export const personal = {
  * @type {string[]}
  */
 export const bio = [
-  'Cyber security engineer who designs and delivers enterprise cloud security at scale, mentors engineers, and leads cross-functional security and compliance programs.',
+  'Cyber security engineer who designs and delivers enterprise cloud security at scale and builds security tooling for AI agents. Mentors engineers and leads cross-functional security and compliance programs.',
   'Combines deep technical expertise with technical leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering), with recent focus on cloud-native security and agentic AI for engineering velocity.',
   'Passionate about mentoring engineers, standardizing security processes, and leading security initiatives end to end.',
 ];
@@ -321,6 +322,7 @@ export const education = [
  */
 export const projects = [
   {
+    kind: 'work',
     title: 'Agentic AI for Security Engineering',
     date: 'Current',
     summary: 'Leveraging modern AI tooling and development practices to accelerate security engineering velocity.',
@@ -328,11 +330,10 @@ export const projects = [
       'Recent focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. This portfolio site is itself an example, built collaboratively with AI-driven development to ship faster without sacrificing quality.',
     tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
     impact: 'Demonstrating that disciplined process and modern AI tooling compound engineering output.',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/realgagenichols' },
-    ],
+    links: [],
   },
   {
+    kind: 'work',
     title: 'Ephemeral VDI Workspace for PCI Data Handling',
     date: 'Feb 2026',
     summary: 'Clean-room VDI environment for PCI data. A weekly pipeline builds a golden image, and each user session runs in an ephemeral VDI instance provisioned from it.',
@@ -343,6 +344,7 @@ export const projects = [
     links: [],
   },
   {
+    kind: 'work',
     title: 'Enterprise Cloud Security Posture Management',
     date: 'Nov 2025',
     summary: 'Designed the account-onboarding, alerting, and remediation workflows behind a multi-account CSPM program.',
@@ -353,6 +355,7 @@ export const projects = [
     links: [],
   },
   {
+    kind: 'work',
     title: 'IAM Team & Process Standardization',
     date: 'May 2025',
     summary: 'Embedded with a newly spun-out IAM team to build the provisioning automation and SSO/SCIM integrations that got them operational.',
@@ -363,6 +366,7 @@ export const projects = [
     links: [],
   },
   {
+    kind: 'work',
     title: 'Internal Data Loss Prevention (DLP) Platform',
     date: 'Mar 2025',
     summary: 'Built a rule-based DLP capability for sensitive data, from classification through audit reporting.',
@@ -373,6 +377,7 @@ export const projects = [
     links: [],
   },
   {
+    kind: 'work',
     title: 'Enterprise Vulnerability Management Program',
     date: 'Aug 2022',
     summary: 'Built the workflows, escalation paths, and stakeholder communication for an enterprise vuln management program.',
@@ -381,6 +386,42 @@ export const projects = [
     tags: ['Vulnerability Management', 'Team Lead', 'SLA', 'Cross-Functional'],
     impact: 'Gave the org a predictable triage-to-remediation pipeline that balanced risk reduction against development velocity.',
     links: [],
+  },
+  {
+    kind: 'oss',
+    title: 'tollbooth: MCP Security Gateway for AI Agents',
+    date: 'Jun 2026',
+    summary:
+      'A transparent MCP proxy that enforces policy on every tool call and result flowing between an AI agent (Claude Code, Cursor, custom clients) and its MCP servers.',
+    description:
+      'A security gateway for agentic AI: tollbooth sits between an MCP client and its servers and applies policy to every tool call and response, giving AI-agent deployments a single, auditable enforcement point instead of trusting each integration.',
+    tags: ['MCP', 'AI Agent Security', 'Policy Enforcement', 'Python', 'Open Source'],
+    impact: 'A policy-enforcement and audit point for the fast-growing, under-secured surface of AI-agent tool use.',
+    links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/tollbooth' }],
+  },
+  {
+    kind: 'oss',
+    title: 'claude-dlp-guard: DLP for AI-Assisted Development',
+    date: 'May 2026',
+    summary:
+      'A rule-based DLP hook for Claude Code that classifies files before the AI reads them and blocks sensitive data, deterministic, no LLM.',
+    description:
+      'Intercepts Claude Code reads with a pre-tool hook and classifies files into a four-tier policy (Restricted to Public) using regex, keyword, metadata, and structure rules. Blocks restricted files, caches classifications in macOS extended attributes, and ships pluggable rule packs, distributed as a Claude Code plugin.',
+    tags: ['DLP', 'Claude Code Plugin', 'Deterministic Classification', 'Python', 'Open Source'],
+    impact: 'A deterministic guardrail against regulated-data exposure during AI-assisted development.',
+    links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/claude-dlp-guard' }],
+  },
+  {
+    kind: 'oss',
+    title: 'mission-control: Claude Session Orchestration',
+    date: 'May 2026',
+    summary:
+      'A localhost web app to launch, manage, and monitor multiple Claude Code sessions from the browser.',
+    description:
+      'Single-process FastAPI + WebSockets app that drives Claude child processes via asyncio with an aiosqlite store. Bound to loopback with defense-in-depth middleware that rejects non-local clients, plus a fake-Claude harness for end-to-end UI testing without burning tokens.',
+    tags: ['FastAPI', 'WebSockets', 'asyncio', 'Local-First Security', 'Open Source'],
+    impact: 'Production-grade local tooling: loopback-only by default, requirements-traced tests, and a clean subprocess lifecycle.',
+    links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/mission-control' }],
   },
 ];
 
@@ -396,6 +437,17 @@ export const social = [
     handle: 'in/gagenichols',
   },
 ];
+
+/**
+ * GitHub profile, surfaced as SOURCE CODE, not a contact channel. Contact stays
+ * LinkedIn-only (R8); this link is the "browse everything" path for the public repos.
+ * @type {Social}
+ */
+export const github = {
+  label: 'GitHub',
+  url: 'https://github.com/Realgagenichols',
+  handle: 'Realgagenichols',
+};
 
 /**
  * Section configuration — single source of truth for nav anchors.
@@ -448,6 +500,7 @@ export default {
   education,
   projects,
   social,
+  github,
   sections,
   seo,
   assertNoPII,

@@ -1909,6 +1909,35 @@ main.console {
   }
 }
 
+/* Group divider between "Selected Work" and "Open Source · Public Code". */
+.projects__group-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--turquoise-bright);
+  margin: 8px 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--turquoise) 30%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.projects__group-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--coral);
+  border-radius: 50%;
+  box-shadow: var(--glow-coral, none);
+}
+.projects__grid + .projects__group-title {
+  margin-top: 40px;
+}
+[data-theme='light'] .projects__group-title {
+  color: var(--turquoise-deep);
+}
+
 .briefing {
   position: relative;
   background: var(--bg-card);
@@ -2380,6 +2409,22 @@ main.console {
 
 [data-theme='light'] .footer__line-script {
   color: var(--coral-deep);
+}
+
+.footer__link {
+  color: var(--turquoise-bright);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.footer__link:hover,
+.footer__link:focus-visible {
+  border-bottom-color: currentColor;
+}
+[data-theme='light'] .footer__link {
+  color: var(--turquoise-deep);
 }
 
 /* =========================================================================

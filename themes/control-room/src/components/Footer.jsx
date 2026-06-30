@@ -1,9 +1,10 @@
-import { personal } from '@shared/data.js';
+import { personal, github } from '@shared/data.js';
 import { Starburst } from './Decorations.jsx';
 
 /**
  * Footer — atomic-age sign-off with a starburst flourish at top.
- * No PII (R8).
+ * Carries a GitHub link framed as SOURCE CODE, not a contact channel
+ * (contact stays LinkedIn-only, R8). No PII (R8).
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -22,7 +23,15 @@ export function Footer() {
         Atomic Control Room · Build <strong>{year}.A</strong>
       </span>
       <span className="footer__line">
-        Signal terminates at this console. No further channels in service.
+        Source on{' '}
+        <a
+          className="footer__link"
+          href={github.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {github.label} &rarr;
+        </a>
       </span>
     </footer>
   );

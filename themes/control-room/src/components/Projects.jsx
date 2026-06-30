@@ -10,15 +10,75 @@ function fileId(idx) {
   return `INNOVATION-${letter}-${num}`;
 }
 
+/** One briefing card. `idx` drives only the decorative file-id stamp. */
+function BriefingCard({ project, idx }) {
+  return (
+    <article
+      className="briefing"
+      tabIndex={0}
+      aria-label={`${project.title}, featured innovation`}
+    >
+      <Starburst
+        size={42}
+        color="currentColor"
+        centerColor="var(--gold)"
+        className="briefing__burst"
+      />
+
+      <header className="briefing__head">
+        <span className="briefing__file-id">{fileId(idx)}</span>
+        <span className="briefing__date">{project.date}</span>
+      </header>
+
+      <h3 className="briefing__title">{project.title}</h3>
+      <p className="briefing__summary">{project.summary}</p>
+
+      <p className="briefing__redacted">{project.description}</p>
+
+      <p className="briefing__impact">{project.impact}</p>
+
+      <ul className="briefing__tags" aria-label="Tags">
+        {project.tags.map((t) => (
+          <li className="briefing__tag" key={t}>
+            {t}
+          </li>
+        ))}
+      </ul>
+
+      {project.links && project.links.length > 0 && (
+        <div className="briefing__links">
+          {project.links.map((link) => (
+            <a
+              key={link.url}
+              className="briefing__link"
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label} &rarr;
+            </a>
+          ))}
+        </div>
+      )}
+    </article>
+  );
+}
+
 /**
- * Projects — "Featured Innovation" cards.  Each card has a starburst
- * corner accent, a Googie display title, and turquoise/coral pill
- * tags.  Hover lifts the card with a coral-glow border.
+ * Projects: "Featured Innovation" cards, split into two labeled groups:
+ * proprietary "Selected Work" first, then "Open Source · Public Code" (repos
+ * with GitHub links).  Each card has a starburst corner accent, a Googie
+ * display title, and turquoise/coral pill tags; hover lifts the card.
  *
- * Requirements: R4 (title, description, tech tags, link).  Cards are
- * keyboard-focusable so the hover lift visualizes via :focus-within.
+ * Requirements: R4 (title, description, tech tags, link; work/oss grouping).
+ * Cards are keyboard-focusable so the hover lift visualizes via :focus-within.
  */
 export function Projects() {
+  // Stable, decorative file-id numbering runs across both groups in array order.
+  const numbered = projects.map((p, idx) => ({ ...p, idx }));
+  const work = numbered.filter((p) => p.kind !== 'oss');
+  const oss = numbered.filter((p) => p.kind === 'oss');
+
   return (
     <section id="projects" className="projects" aria-labelledby="projects-heading">
       <header className="section-head">
@@ -32,59 +92,23 @@ export function Projects() {
         </p>
       </header>
 
+      <h3 className="projects__group-title">Selected Work</h3>
       <div className="projects__grid">
-        {projects.map((p, idx) => (
-          <article
-            key={p.title}
-            className="briefing"
-            tabIndex={0}
-            aria-label={`${p.title}, featured innovation`}
-          >
-            <Starburst
-              size={42}
-              color="currentColor"
-              centerColor="var(--gold)"
-              className="briefing__burst"
-            />
-
-            <header className="briefing__head">
-              <span className="briefing__file-id">{fileId(idx)}</span>
-              <span className="briefing__date">{p.date}</span>
-            </header>
-
-            <h3 className="briefing__title">{p.title}</h3>
-            <p className="briefing__summary">{p.summary}</p>
-
-            <p className="briefing__redacted">{p.description}</p>
-
-            <p className="briefing__impact">{p.impact}</p>
-
-            <ul className="briefing__tags" aria-label="Tags">
-              {p.tags.map((t) => (
-                <li className="briefing__tag" key={t}>
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            {p.links && p.links.length > 0 && (
-              <div className="briefing__links">
-                {p.links.map((link) => (
-                  <a
-                    key={link.url}
-                    className="briefing__link"
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label} &rarr;
-                  </a>
-                ))}
-              </div>
-            )}
-          </article>
+        {work.map((p) => (
+          <BriefingCard key={p.title} project={p} idx={p.idx} />
         ))}
       </div>
+
+      {oss.length > 0 && (
+        <>
+          <h3 className="projects__group-title">Open Source · Public Code</h3>
+          <div className="projects__grid">
+            {oss.map((p) => (
+              <BriefingCard key={p.title} project={p} idx={p.idx} />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }

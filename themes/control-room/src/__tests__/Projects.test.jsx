@@ -39,11 +39,48 @@ describe('Projects (R4)', () => {
     const linksFromData = projects.flatMap((p) => p.links);
     if (linksFromData.length === 0) return; // Some projects have no links — that's allowed.
     for (const link of linksFromData) {
-      const el = screen.getByRole('link', { name: new RegExp(link.label, 'i') });
-      expect(el).toHaveAttribute('href', link.url);
-      expect(el).toHaveAttribute('target', '_blank');
-      expect(el.getAttribute('rel') ?? '').toMatch(/noopener/);
+      // Labels collide (multiple "GitHub" links), so disambiguate by href.
+      const matches = screen
+        .getAllByRole('link', { name: new RegExp(link.label, 'i') })
+        .filter((el) => el.getAttribute('href') === link.url);
+      expect(matches.length, `link ${link.url}`).toBeGreaterThan(0);
+      for (const el of matches) {
+        expect(el).toHaveAttribute('target', '_blank');
+        expect(el.getAttribute('rel') ?? '').toMatch(/noopener/);
+      }
     }
+  });
+
+  // R4 (changes/open-source-proof): the open-source repos render as cards with
+  // working GitHub links pointing at the owner's account.
+  it('renders the open-source repos with GitHub links to the owner account', () => {
+    render(<Projects />);
+    const ossUrls = [
+      'https://github.com/Realgagenichols/tollbooth',
+      'https://github.com/Realgagenichols/claude-dlp-guard',
+      'https://github.com/Realgagenichols/mission-control',
+    ];
+    // Sanity-check the data shape first.
+    expect(projects.filter((p) => p.kind === 'oss')).toHaveLength(3);
+
+    const githubLinks = screen.getAllByRole('link', { name: /github/i });
+    for (const url of ossUrls) {
+      const matching = githubLinks.filter((el) => el.getAttribute('href') === url);
+      expect(matching.length, `no link to ${url}`).toBeGreaterThan(0);
+      for (const el of matching) {
+        expect(el).toHaveAttribute('target', '_blank');
+        expect(el.getAttribute('rel') ?? '').toMatch(/noopener/);
+      }
+    }
+  });
+
+  // R4: work and open-source appear under distinct group headings, Selected Work first.
+  it('renders distinct project groups with Selected Work before Open Source', () => {
+    const { container } = render(<Projects />);
+    const headings = [...container.querySelectorAll('.projects__group-title')].map(
+      (el) => el.textContent,
+    );
+    expect(headings).toEqual(['Selected Work', 'Open Source · Public Code']);
   });
 
   // R3.2 (changes/section-content-differentiation): a project card that shares an
