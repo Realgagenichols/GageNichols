@@ -74,13 +74,14 @@ export function Skills() {
   const groups = skills.map((g, gi) => ({
     ...g,
     token: categoryToken(gi),
-    items: g.items.map((label) => {
+    items: g.items.map((item) => {
       runningNumber += 1;
       return {
-        label,
-        symbol: symbolFor(label),
+        label: item.name,
+        detail: item.detail,
+        symbol: symbolFor(item.name),
         number: runningNumber,
-        key: `${gi}-${label}`,
+        key: `${gi}-${item.name}`,
         category: g.category,
       };
     }),
@@ -171,7 +172,9 @@ export function Skills() {
                 <span className="dossier__category">{activeElement.group.category}</span>
                 <h3 className="dossier__name">{activeElement.label}</h3>
                 <p className="dossier__copy">
-                  Cataloged in the {activeElement.group.category.toLowerCase()} register. Click another element to view its dossier, or click this one again to close the panel.
+                  {activeElement.detail
+                    ? activeElement.detail
+                    : `Cataloged in the ${activeElement.group.category.toLowerCase()} register. Click another element to view its dossier, or click this one again to close the panel.`}
                 </p>
               </div>
             </div>

@@ -25,9 +25,17 @@
  */
 
 /**
+ * @typedef {Object} Skill
+ * @property {string} name - Capability label; drives the periodic-table tile symbol and aria label
+ * @property {string} detail - One-sentence example backing the capability. Sourced from real work
+ *   (data.js facts, the private master profile, or public GitHub repos). MUST NOT fabricate facts (L4)
+ *   and MUST NOT contain PII (R8).
+ */
+
+/**
  * @typedef {Object} SkillGroup
  * @property {string} category - Category name
- * @property {string[]} items - Skills in this category
+ * @property {Skill[]} items - Skills in this category
  */
 
 /**
@@ -101,43 +109,130 @@ export const skills = [
   {
     category: 'Cloud & Infrastructure',
     items: [
-      'AWS Multi-Account Architecture',
-      'Cloud Security Posture Management (CSPM)',
-      'Identity & Access Management (IAM)',
-      'Infrastructure as Code (IaC)',
-      'Security Automation',
+      {
+        name: 'AWS Multi-Account Architecture',
+        detail:
+          'Drives security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms.',
+      },
+      {
+        name: 'Cloud Security Posture Management (CSPM)',
+        detail:
+          'Led the end-to-end CSPM rollout across 30+ AWS accounts and 200k+ resources, wiring in alerting and remediation workflows.',
+      },
+      {
+        name: 'Identity & Access Management (IAM)',
+        detail:
+          'Helped stand up an internal IAM team, contributing mentorship, process standardization, and automation that cut manual provisioning.',
+      },
+      {
+        name: 'Infrastructure as Code (IaC)',
+        detail:
+          'Builds repeatable infrastructure from code, including the golden-image pipeline behind the ephemeral PCI VDI workspace.',
+      },
+      {
+        name: 'Security Automation',
+        detail:
+          'Built and maintained security automation across the cloud environment, reducing manual effort and improving operations efficiency.',
+      },
     ],
   },
   {
     category: 'AI & Agentic Engineering',
     items: [
-      'Agentic AI Engineering',
-      'Security-First AI Tooling',
-      'Spec-Driven Development',
-      'Plugin & Skill Authorship',
+      {
+        name: 'Agentic AI Engineering',
+        detail:
+          'Designs agentic workflows that augment security engineering tasks and reduce friction on recurring work.',
+      },
+      {
+        name: 'Security-First AI Tooling',
+        detail:
+          'Builds deterministic guardrails for AI-assisted development that classify and block sensitive files before an AI assistant can read them.',
+      },
+      {
+        name: 'Spec-Driven Development',
+        detail:
+          'Designs from written RFC 2119 specs with Given/When/Then scenarios before implementation, so intent is testable from day one. This site is one example.',
+      },
+      {
+        name: 'Plugin & Skill Authorship',
+        detail:
+          'Ships internal Claude Code plugins, custom skills, and agents through a self-hosted marketplace to encode institutional knowledge.',
+      },
     ],
   },
   {
     category: 'Security Operations',
     items: [
-      'Vulnerability Management',
-      'Threat Detection',
-      'Incident Response',
-      'Digital Forensics',
-      'Data Loss Prevention (DLP)',
+      {
+        name: 'Vulnerability Management',
+        detail:
+          'Led a cross-functional vulnerability management team to consistent SLA compliance for high/critical remediation.',
+      },
+      {
+        name: 'Threat Detection',
+        detail:
+          'Fed incident and forensic findings back into detection and control improvements across a global production environment.',
+      },
+      {
+        name: 'Incident Response',
+        detail:
+          'Provided on-call coverage for emergency and large-scale incidents, sharpening detection, escalation, containment, and resolution.',
+      },
+      {
+        name: 'Digital Forensics',
+        detail:
+          'Conducted endpoint forensics and log analysis on confirmed compromises, feeding findings back into detection.',
+      },
+      {
+        name: 'Data Loss Prevention (DLP)',
+        detail:
+          'Designed an internal DLP platform deployed to 100+ endpoints, fulfilling PCI requirements for sensitive cardholder data.',
+      },
     ],
   },
   {
     category: 'Compliance & Frameworks',
-    items: ['SOC 2', 'PCI DSS', 'GRC'],
+    items: [
+      {
+        name: 'SOC 2',
+        detail: 'Partnered with leadership on GRC initiatives that achieved SOC 2 compliance.',
+      },
+      {
+        name: 'PCI DSS',
+        detail:
+          'Fulfilled PCI DSS requirements through the endpoint DLP platform and the clean-room ephemeral VDI workspace for cardholder data.',
+      },
+      {
+        name: 'GRC',
+        detail:
+          'Partnered with leadership on GRC programs achieving SOC 2 and PCI DSS compliance.',
+      },
+    ],
   },
   {
     category: 'Leadership & Mentorship',
     items: [
-      'Team Leadership & Mentorship',
-      'Leading Cross-Functional Initiatives',
-      'Risk Management & Decision Making',
-      'Security Process Standardization',
+      {
+        name: 'Team Leadership & Mentorship',
+        detail:
+          'Mentors engineers and supported standing up an internal IAM team with process standardization and automation.',
+      },
+      {
+        name: 'Leading Cross-Functional Initiatives',
+        detail:
+          'Coordinated security assessments and remediation across engineering teams, balancing risk reduction with development velocity.',
+      },
+      {
+        name: 'Risk Management & Decision Making',
+        detail:
+          'Drove risk mitigation strategies in partnership with infrastructure and development teams, strengthening overall posture.',
+      },
+      {
+        name: 'Security Process Standardization',
+        detail:
+          'Established team workflows, escalation procedures, and standardized processes that improved consistency and stakeholder communication.',
+      },
     ],
   },
 ];

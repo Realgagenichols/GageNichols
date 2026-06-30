@@ -5,7 +5,7 @@
  * an element opens a dossier panel.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { skills } from '@shared/data.js';
@@ -43,7 +43,7 @@ describe('Skills (R3)', () => {
 
   it('opens a dossier with the skill name and category when an element is clicked', async () => {
     render(<Skills />);
-    const firstSkill = skills[0].items[0];
+    const firstSkill = skills[0].items[0].name;
     const tile = screen.getByRole('button', { name: new RegExp(firstSkill, 'i') });
     await userEvent.click(tile);
     expect(tile).toHaveAttribute('aria-expanded', 'true');
@@ -51,5 +51,51 @@ describe('Skills (R3)', () => {
     const dossier = screen.getByRole('region', { name: /capability dossier/i });
     expect(dossier).toHaveTextContent(firstSkill);
     expect(dossier).toHaveTextContent(skills[0].category);
+  });
+
+  // Delta spec (changes/capability-dossier-examples): dossier shows a per-element example.
+  it('shows the selected element\'s sourced example in the dossier', async () => {
+    render(<Skills />);
+    const firstSkill = skills[0].items[0];
+    expect(firstSkill.detail).toBeTruthy(); // guard: real data carries an example
+    const tile = screen.getByRole('button', { name: new RegExp(firstSkill.name, 'i') });
+    await userEvent.click(tile);
+
+    const dossier = screen.getByRole('region', { name: /capability dossier/i });
+    expect(dossier).toHaveTextContent(firstSkill.detail);
+    // The generic boilerplate must NOT appear when a detail is present.
+    expect(dossier).not.toHaveTextContent(/Cataloged in the .* register/i);
+  });
+
+  // Delta spec: every shipped element carries a sourced example (no boilerplate fallback in prod data).
+  it('provides a detail example for every capability', () => {
+    for (const group of skills) {
+      for (const item of group.items) {
+        expect(item.detail, `${item.name} is missing a detail`).toBeTruthy();
+      }
+    }
+  });
+});
+
+// Delta spec (changes/capability-dossier-examples): missing detail falls back gracefully.
+// Isolated so the module mock for a detail-less skill does not leak into the suite above.
+describe('Skills dossier fallback (R3)', () => {
+  afterEach(() => {
+    vi.resetModules();
+    vi.doUnmock('@shared/data.js');
+  });
+
+  it('renders the generic register line when an element has no detail', async () => {
+    vi.resetModules();
+    vi.doMock('@shared/data.js', () => ({
+      skills: [{ category: 'Cloud & Infrastructure', items: [{ name: 'Orphan Skill' }] }],
+    }));
+    const { Skills: SkillsMocked } = await import('../components/Skills.jsx');
+
+    render(<SkillsMocked />);
+    await userEvent.click(screen.getByRole('button', { name: /Orphan Skill/i }));
+
+    const dossier = screen.getByRole('region', { name: /capability dossier/i });
+    expect(dossier).toHaveTextContent(/Cataloged in the cloud & infrastructure register/i);
   });
 });
