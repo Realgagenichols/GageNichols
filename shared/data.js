@@ -68,13 +68,13 @@ export const personal = {
 };
 
 /**
- * Bio paragraphs — positioned for security leadership / management roles.
+ * Bio paragraphs — positioned for senior IC / technical lead roles.
  * @type {string[]}
  */
 export const bio = [
-  'Security engineering leader who builds and mentors teams, drives compliance programs, and delivers enterprise cloud security at scale.',
-  'Combines technical depth with strategic leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering) with recent focus on cloud-native security capabilities and agentic AI for security velocity.',
-  'Passionate about mentoring engineers, standardizing security processes, and growing into security leadership.',
+  'Cyber security engineer who designs and delivers enterprise cloud security at scale, mentors engineers, and leads cross-functional security and compliance programs.',
+  'Combines deep technical expertise with technical leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering), with recent focus on cloud-native security and agentic AI for engineering velocity.',
+  'Passionate about mentoring engineers, standardizing security processes, and leading security initiatives end to end.',
 ];
 
 /**
@@ -93,24 +93,11 @@ export const highlights = [
 ];
 
 /**
- * Skills grouped by category. Order matters — leadership first to reinforce positioning.
+ * Skills grouped by category. Order matters — technical depth first, with
+ * leadership/mentorship as a supporting closer (senior IC / lead positioning).
  * @type {SkillGroup[]}
  */
 export const skills = [
-  {
-    category: 'Leadership & Strategy',
-    items: [
-      'Team Leadership & Mentorship',
-      'Cross-Functional Collaboration',
-      'Strategic Planning & Roadmap Development',
-      'Project & Program Management',
-      'Risk Management & Decision Making',
-    ],
-  },
-  {
-    category: 'Compliance & Frameworks',
-    items: ['SOC 2', 'PCI DSS', 'GRC'],
-  },
   {
     category: 'Cloud & Infrastructure',
     items: [
@@ -119,6 +106,15 @@ export const skills = [
       'Identity & Access Management (IAM)',
       'Infrastructure as Code (IaC)',
       'Security Automation',
+    ],
+  },
+  {
+    category: 'AI & Agentic Engineering',
+    items: [
+      'Agentic AI Engineering',
+      'Security-First AI Tooling',
+      'Spec-Driven Development',
+      'Plugin & Skill Authorship',
     ],
   },
   {
@@ -132,12 +128,16 @@ export const skills = [
     ],
   },
   {
-    category: 'AI & Agentic Engineering',
+    category: 'Compliance & Frameworks',
+    items: ['SOC 2', 'PCI DSS', 'GRC'],
+  },
+  {
+    category: 'Leadership & Mentorship',
     items: [
-      'Agentic AI Engineering',
-      'Security-First AI Tooling',
-      'Spec-Driven Development',
-      'Plugin & Skill Authorship',
+      'Team Leadership & Mentorship',
+      'Leading Cross-Functional Initiatives',
+      'Risk Management & Decision Making',
+      'Security Process Standardization',
     ],
   },
 ];
@@ -317,9 +317,9 @@ export const sections = [
  * SEO metadata defaults.
  */
 export const seo = {
-  title: 'Gage Nichols | Cyber Security Engineer',
+  title: 'Gage Nichols | Cyber Security Engineer · Cloud Security & Compliance',
   description:
-    'Security engineering leader delivering cloud security for 8M+ users. Cloud & security operations, strategic risk management, team leadership.',
+    'Cyber security engineer focused on cloud security, security engineering, and compliance (SOC 2, PCI DSS) across AWS, with security automation and agentic AI tooling.',
   // Path is relative so the site stays portable across GitHub Pages subpath
   // and custom domain deployments.  The image lives in each theme's public/
   // directory so it lands at dist/og-image.jpg.

@@ -22,7 +22,9 @@ describe('Hero (R1)', () => {
     );
 
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(personal.name);
-    expect(screen.getByText(new RegExp(personal.title, 'i'))).toBeInTheDocument();
+    // The title phrase can appear more than once (title block + mission readout),
+    // so assert it is present rather than uniquely present.
+    expect(screen.getAllByText(new RegExp(personal.title, 'i')).length).toBeGreaterThan(0);
     // The primary CTA is a link styled as a button — it must be discoverable.
     const cta = screen.getAllByRole('link').find((el) => /explore|projects|view|engage/i.test(el.textContent));
     expect(cta).toBeDefined();

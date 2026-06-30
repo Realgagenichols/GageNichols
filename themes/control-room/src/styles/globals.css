@@ -1203,11 +1203,6 @@ main.console {
     /* four personal-highlight cards sit on a single desktop row */
     grid-template-columns: repeat(4, 1fr);
   }
-  .punch-card__value {
-    /* tighter value type so longer values (e.g. "SOC 2 · PCI DSS")
-       fit the narrower 4-up cards without ugly wrapping */
-    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
-  }
 }
 
 .punch-card {
@@ -1264,10 +1259,21 @@ main.console {
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
+  /* Never let a long value bleed past the card edge. */
+  overflow-wrap: break-word;
 }
 
 [data-theme='light'] .punch-card__value {
   color: var(--coral-deep);
+}
+
+/* In the 4-up desktop layout the cards are narrow, so shrink the value type so
+   longer values ("Agentic AI", "SOC 2 · PCI DSS") fit. Defined after the base
+   rule so it wins on source order at equal specificity. */
+@media (min-width: 1080px) {
+  .punch-card__value {
+    font-size: 1.25rem;
+  }
 }
 
 .punch-card__caption {
