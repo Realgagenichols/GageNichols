@@ -73,7 +73,7 @@
 export const personal = {
   name: 'Gage Nichols',
   title: 'Cyber Security Engineer',
-  tagline: 'Cloud Security at Scale · Security Tooling for AI Agents',
+  tagline: 'Cloud Security & Automation at Scale',
   location: 'Texas, US',
 };
 
@@ -82,7 +82,7 @@ export const personal = {
  * @type {string[]}
  */
 export const bio = [
-  'Cyber security engineer who designs and delivers enterprise cloud security at scale and builds security tooling for AI agents. Mentors engineers and leads cross-functional security and compliance programs.',
+  'Cyber security engineer who designs and delivers enterprise cloud security at scale and builds security tooling. Mentors engineers and leads cross-functional security and compliance programs.',
   'Combines deep technical expertise with technical leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering), with recent focus on cloud-native security and agentic AI for engineering velocity.',
   'Passionate about mentoring engineers, standardizing security processes, and leading security initiatives end to end.',
 ];
@@ -492,9 +492,9 @@ export const sections = [
  * SEO metadata defaults.
  */
 export const seo = {
-  title: 'Gage Nichols | Cyber Security Engineer · Cloud Security & Compliance',
+  title: 'Gage Nichols | Cyber Security Engineer · Cloud Security & Automation',
   description:
-    'Cyber security engineer focused on cloud security, security engineering, and compliance (SOC 2, PCI DSS) across AWS, with security automation and agentic AI tooling.',
+    'Cyber security engineer focused on cloud security, security engineering, and security automation across AWS, with agentic AI tooling.',
   // Path is relative so the site stays portable across GitHub Pages subpath
   // and custom domain deployments.  The image lives in each theme's public/
   // directory so it lands at dist/og-image.jpg.
