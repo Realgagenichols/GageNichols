@@ -3,6 +3,8 @@
  *
  * SHALL: display name, title/tagline, CTA above the fold with atomic-age styling.
  * Scenario "First impression": name + title + CTA visible.
+ * The hero carries no "Mission:"/"Status:" readout. Dropped 2026-09-04 as
+ * redundant with About (mission) and signal-free (status).
  * Scenario "CTA navigation": clicking the CTA invokes scrollIntoView on a section.
  */
 
@@ -22,8 +24,8 @@ describe('Hero (R1)', () => {
     );
 
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(personal.name);
-    // The title phrase can appear more than once (title block + mission readout),
-    // so assert it is present rather than uniquely present.
+    // Assert the title is present rather than uniquely present, since it may also
+    // appear in decorative chrome.
     expect(screen.getAllByText(new RegExp(personal.title, 'i')).length).toBeGreaterThan(0);
     // The primary CTA is a link styled as a button — it must be discoverable.
     const cta = screen.getAllByRole('link').find((el) => /explore|projects|view|engage/i.test(el.textContent));

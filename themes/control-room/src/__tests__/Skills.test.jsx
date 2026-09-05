@@ -67,6 +67,22 @@ describe('Skills (R3)', () => {
     expect(dossier).not.toHaveTextContent(/Cataloged in the .* register/i);
   });
 
+  // R3.1: tokens are assigned by category index from a five-token list, so a sixth
+  // category would silently reuse the first category's hue.
+  it('gives every category its own palette token', () => {
+    const { container } = render(<Skills />);
+    const TOKENS = ['coral', 'gold', 'turquoise', 'pink', 'violet'];
+    expect(skills.length).toBeLessThanOrEqual(TOKENS.length);
+
+    const used = [...container.querySelectorAll('.periodic__group')].map((el) => {
+      const hit = TOKENS.filter((t) => el.classList.contains(`periodic__group--${t}`));
+      expect(hit, `group has exactly one palette token, got ${hit}`).toHaveLength(1);
+      return hit[0];
+    });
+    expect(used).toHaveLength(skills.length);
+    expect(new Set(used).size).toBe(used.length);
+  });
+
   // Delta spec: every shipped element carries a sourced example (no boilerplate fallback in prod data).
   it('provides a detail example for every capability', () => {
     for (const group of skills) {

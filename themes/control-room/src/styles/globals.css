@@ -926,33 +926,6 @@ main.console {
   50.01%, 100% { opacity: 0; }
 }
 
-.hero__readout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
-@media (min-width: 600px) {
-  .hero__readout {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-.hero__readout strong {
-  color: var(--text-strong);
-  font-weight: 700;
-}
-
-.hero__readout-bullet {
-  color: var(--coral-bright);
-  margin-right: 6px;
-}
-[data-theme='light'] .hero__readout-bullet {
-  color: var(--coral-deep);
-}
-
 .hero__cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -1194,14 +1167,11 @@ main.console {
   margin-top: 12px;
 }
 @media (min-width: 600px) {
+  /* Derive the track count from how many highlights there actually are.
+     A hardcoded `repeat(4, 1fr)` left an empty slot when the strip dropped
+     to three cards. */
   .punch-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (min-width: 1080px) {
-  .punch-cards {
-    /* four personal-highlight cards sit on a single desktop row */
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
@@ -1382,6 +1352,7 @@ main.console {
 .periodic__group--gold::before { background: var(--gold); }
 .periodic__group--turquoise::before { background: var(--turquoise); }
 .periodic__group--pink::before { background: var(--pink); }
+.periodic__group--violet::before { background: var(--violet); }
 
 @media (max-width: 480px) {
   .periodic__group {
@@ -2520,41 +2491,9 @@ main.console {
 /* =========================================================================
    ATOM LOGO — animation
    ========================================================================= */
-.atom__orbit.atom--spin {
-  transform-origin: 0 0;
-  animation: atom-spin 15s linear infinite;
-}
-
-.atom__orbit--2.atom--spin {
-  animation-duration: 13s;
-  animation-direction: reverse;
-}
-
-.atom__orbit--3.atom--spin {
-  animation-duration: 17s;
-}
-
-@keyframes atom-spin {
-  from {
-    transform: rotate(var(--orbit-base, 0deg));
-  }
-  to {
-    transform: rotate(calc(var(--orbit-base, 0deg) + 360deg));
-  }
-}
-
-.atom__orbit--2 {
-  --orbit-base: 60deg;
-}
-.atom__orbit--3 {
-  --orbit-base: -60deg;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .atom__orbit.atom--spin {
-    animation: none;
-  }
-}
+/* The atom's orbital planes are static; the electrons travel along them via
+   <animateMotion> in AtomLogo.jsx, which is also where reduced-motion is
+   honored (the motion elements are simply not rendered). */
 
 /* =========================================================================
    UTILITIES

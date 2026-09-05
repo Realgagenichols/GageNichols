@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { personal, bio } from '@shared/data.js';
+import { personal } from '@shared/data.js';
 import { useTypewriter } from '@shared/hooks/useTypewriter.js';
 import { SmoothLink } from '@shared/components/SmoothScroll.jsx';
 import { AtomLogo } from './AtomLogo.jsx';
@@ -69,17 +69,6 @@ export function Hero() {
                 {tagline}
                 {!done && <span className="hero__cursor" aria-hidden="true" />}
               </p>
-
-              <div className="hero__readout">
-                <span>
-                  <span className="hero__readout-bullet">*</span>
-                  Mission: <strong>{bio[0].split('.')[0]}.</strong>
-                </span>
-                <span>
-                  <span className="hero__readout-bullet">*</span>
-                  Status: <strong>Operational</strong>
-                </span>
-              </div>
 
               <div className="hero__cta-row">
                 <SmoothLink

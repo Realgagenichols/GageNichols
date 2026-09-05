@@ -34,4 +34,11 @@ describe('About (R2)', () => {
       expect(screen.getByText(h.value)).toBeInTheDocument();
     }
   });
+
+  // R2: the first bio paragraph SHALL name both differentiator strengths.
+  it('opens the bio with both differentiators in its first sentence', () => {
+    const opener = bio[0].split('.')[0];
+    expect(opener).toMatch(/cloud security at scale/i);
+    expect(opener).toMatch(/AI agents?/i);
+  });
 });

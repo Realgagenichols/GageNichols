@@ -11,6 +11,8 @@ const SYMBOL_OVERRIDES = {
   'Identity & Access Management (IAM)': 'Id',
   'Agentic AI Engineering': 'Ai',
   'Security-First AI Tooling': 'Sf',
+  // Default derivation gives "Sd", colliding with Spec-Driven Development.
+  'Serverless Data Pipelines at Scale': 'Sv',
 };
 
 /**

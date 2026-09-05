@@ -5,8 +5,11 @@
  * home addresses, or any other PII. Contact channels are LinkedIn and GitHub only.
  * The PII scanner (scripts/scan-pii.mjs) verifies this on every build.
  *
- * Content positioning: emphasizes security leadership, mentoring, strategic program work,
- * and cross-functional collaboration — targeting lead/manager roles.
+ * Content positioning: emphasizes senior cloud security engineering, platform and
+ * performance work, compliance delivery, and agentic AI tooling.
+ *
+ * SOURCE OF TRUTH: ~/Documents/career/master-profile.md (local, gitignored).
+ * Every numeral here traces to that file (L4: no fabricated facts).
  */
 
 /**
@@ -20,7 +23,7 @@
 /**
  * @typedef {Object} Highlight
  * @property {string} label - Short metric or descriptor
- * @property {string} value - The number or fact (e.g., "8M+", "30+")
+ * @property {string} value - The number or fact (e.g., "8.2M+", "40+")
  * @property {string} caption - Brief context line
  */
 
@@ -72,39 +75,43 @@
 /** @type {Personal} */
 export const personal = {
   name: 'Gage Nichols',
-  title: 'Cyber Security Engineer',
+  title: 'Senior Cloud Security Engineer',
   tagline: 'Cloud Security & Automation at Scale',
   location: 'Texas, US',
 };
 
 /**
- * Bio paragraphs — positioned for senior IC / technical lead roles.
+ * Bio paragraphs, positioned for senior cloud security engineering roles.
+ * bio[0] carries both differentiator strengths per SPEC R2.
  * @type {string[]}
  */
 export const bio = [
-  'Cyber security engineer who designs and delivers enterprise cloud security at scale and builds security tooling. Mentors engineers and leads cross-functional security and compliance programs.',
-  'Combines deep technical expertise with technical leadership and cross-functional collaboration. Background spans the full security lifecycle (incident response, vulnerability management, security operations, and security engineering), with recent focus on cloud-native security and agentic AI for engineering velocity.',
-  'Passionate about mentoring engineers, standardizing security processes, and leading security initiatives end to end.',
+  'Senior cloud security engineer who designs and delivers enterprise cloud security at scale and builds open-source security tooling for AI agents. Now at Benchmark Analytics, working across cloud infrastructure, Kubernetes platform security, and secure SDLC for a regulated SaaS platform.',
+  'Previously owned cloud security at Lumin Digital across 40+ AWS accounts serving 8.2M+ users on 100+ credit union and community bank platforms: posture management, IAM, edge, and zero-trust access.',
+  'Background spans the full security lifecycle (incident response, digital forensics, vulnerability management, security operations, and security engineering), with recent focus on agentic AI and spec-driven development. Passionate about mentoring engineers, standardizing security processes, and leading security initiatives end to end.',
 ];
 
 /**
  * Headline highlights — rendered in the "Meet the Engineer" card strip.
  * These are personal facts about the owner (tenure, leadership, credentials, focus areas),
- * NOT employer-scale metrics. The employer-scale numbers (8M+ users, 90+ platforms,
- * 30+ accounts, 200k+ resources) live in the experience timeline, where a specific role
+ * NOT employer-scale metrics. The employer-scale numbers (8.2M+ users, 100+ platforms,
+ * 40+ accounts, 2.5M+ resources) live in the experience timeline, where a specific role
  * gives them context. Keeping them out of here avoids implying they are personal stats.
  * @type {Highlight[]}
  */
 export const highlights = [
   { label: 'Experience', value: '5+ years', caption: 'across the security lifecycle' },
-  { label: 'Leadership', value: 'Team Lead', caption: 'led vuln management, team mentor' },
   { label: 'Compliance', value: 'SOC 2 · PCI DSS', caption: 'achieved in partnership with leadership' },
   { label: 'AI Engineering', value: 'Agentic AI', caption: 'security-first tooling for engineering velocity' },
 ];
 
 /**
  * Skills grouped by category. Order matters — technical depth first, with
- * leadership/mentorship as a supporting closer (senior IC / lead positioning).
+ * leadership/strategy as a supporting closer.
+ *
+ * NOTE: the Skills component assigns a palette token per category by index and
+ * only five tokens exist (coral, gold, turquoise, pink, violet). Adding a sixth
+ * category would wrap the palette and collide with the first. Keep this at five.
  * @type {SkillGroup[]}
  */
 export const skills = [
@@ -114,17 +121,17 @@ export const skills = [
       {
         name: 'AWS Multi-Account Architecture',
         detail:
-          'Drives security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms.',
+          'Owned cloud security across 40+ AWS accounts serving 8.2M+ users on 100+ client platforms, and hardened the organization with service control policies plus org-wide Access Analyzer, Config, Security Hub, and Inspector.',
       },
       {
         name: 'Cloud Security Posture Management (CSPM)',
         detail:
-          'Led the end-to-end CSPM rollout across 30+ AWS accounts and 200k+ resources, wiring in alerting and remediation workflows.',
+          'Evaluated three CSPM platforms for the SOC, then led the rollout across 40+ AWS accounts and 2.5M+ resources, wiring findings into existing alerting and remediation workflows.',
       },
       {
         name: 'Identity & Access Management (IAM)',
         detail:
-          'Designs access management and provisioning automation, including SSO and SCIM integrations, standardizing how identities and entitlements are granted and reviewed.',
+          'Designs access management and provisioning automation, including SSO and SCIM integrations, and drove least-privilege remediation of overly broad access to production data stores.',
       },
       {
         name: 'Infrastructure as Code (IaC)',
@@ -134,7 +141,22 @@ export const skills = [
       {
         name: 'Security Automation',
         detail:
-          'Built and maintained security automation across the cloud environment, reducing manual effort and improving operations efficiency.',
+          'Built and maintained security automation across the cloud environment, from quarterly access-review tooling to the monthly compliance-evidence pipeline.',
+      },
+      {
+        name: 'Serverless Data Pipelines at Scale',
+        detail:
+          'Ran the security log transformation fleet: 18 AWS Lambda functions moving roughly 2 billion records a day through Kinesis Firehose into the OpenSearch SIEM.',
+      },
+      {
+        name: 'Zero-Downtime Migration',
+        detail:
+          'Cut 18 production Lambda transforms over one at a time with in-place image swaps, digest-pinned one-command backouts, and live-metric soak gates. Zero production errors across all 18.',
+      },
+      {
+        name: 'Performance Engineering & Benchmarking',
+        detail:
+          'Built a language-agnostic benchmarking harness with correctness oracles, deterministic load simulation, hardware-counted instructions per record, and genuine cold-start measurement. Its cost model produced the migration business case.',
       },
     ],
   },
@@ -144,12 +166,17 @@ export const skills = [
       {
         name: 'Agentic AI Engineering',
         detail:
-          'Designs agentic workflows that augment security engineering tasks and reduce friction on recurring work.',
+          'Designs agentic workflows that augment security engineering tasks and reduce friction on recurring work, and led internal enablement trainings to spread the practice.',
       },
       {
         name: 'Security-First AI Tooling',
         detail:
           'Builds deterministic guardrails for AI-assisted development that classify and block sensitive files before an AI assistant can read them.',
+      },
+      {
+        name: 'MCP & AI Agent Security',
+        detail:
+          'Built a defense-in-depth suite for AI-agent tool use: frisk vets an MCP server in a sandbox before you trust it, tollbooth enforces policy and DLP on every call at runtime, and claude-dlp-guard blocks sensitive reads.',
       },
       {
         name: 'Spec-Driven Development',
@@ -159,7 +186,7 @@ export const skills = [
       {
         name: 'Plugin & Skill Authorship',
         detail:
-          'Ships internal Claude Code plugins, custom skills, and agents through a self-hosted marketplace to encode institutional knowledge.',
+          'Ships internal Claude Code plugins, custom skills, MCP servers, and agents through a self-hosted marketplace to encode institutional knowledge.',
       },
     ],
   },
@@ -169,17 +196,17 @@ export const skills = [
       {
         name: 'Vulnerability Management',
         detail:
-          'Led a cross-functional vulnerability management team to consistent SLA compliance for high/critical remediation.',
+          'Led a cross-functional vulnerability management team to consistent SLA compliance for high/critical remediation, and set the enterprise scoring standard underneath it.',
       },
       {
-        name: 'Threat Detection',
+        name: 'SIEM & Detection Engineering',
         detail:
-          'Fed incident and forensic findings back into detection and control improvements across a global production environment.',
+          'Deployed Sysmon across Windows endpoints via PowerShell, onboarded the resulting sources into Splunk Cloud, then authored alerts on top of them and tuned filters to cut false positives.',
       },
       {
         name: 'Incident Response',
         detail:
-          'Provided on-call coverage for emergency and large-scale incidents, sharpening detection, escalation, containment, and resolution.',
+          'Provided on-call coverage for emergency and large-scale incidents and authored production postmortems, sharpening detection, escalation, containment, and resolution.',
       },
       {
         name: 'Digital Forensics',
@@ -189,7 +216,22 @@ export const skills = [
       {
         name: 'Data Loss Prevention (DLP)',
         detail:
-          'Designed an internal DLP platform deployed to 100+ endpoints, fulfilling PCI requirements for sensitive cardholder data.',
+          'Designed an internal DLP platform deployed to 100+ endpoints, classifying cardholder data with deterministic rules and closing a PCI control requirement.',
+      },
+      {
+        name: 'PKI & Certificate Lifecycle',
+        detail:
+          'Provisioned and rotated 55+ TLS/SAML certificates, CSRs, SSH key pairs, and OIDC credentials across 40+ financial-institution and vendor integrations with no cert-expiry outages.',
+      },
+      {
+        name: 'WAF & Edge Security',
+        detail:
+          'Engineered a Python tool that enabled Cloudflare Page Shield across 100% of production zones, closing PCI DSS 4.0 script-integrity gaps the Terraform provider could not express.',
+      },
+      {
+        name: 'Zero Trust Network Access',
+        detail:
+          'Administered Zscaler ZIA and ZPA: a contractor device-posture access model, automated app-segment creation for production sites, and default-deny cloud-app control.',
       },
     ],
   },
@@ -199,12 +241,22 @@ export const skills = [
       {
         name: 'SOC 2',
         detail:
-          'Contributed the control evidence and audit readiness behind an achieved SOC 2 compliance.',
+          'Owned and closed 123 SOC 2 and PCI evidence-collection tasks across 12+ systems and control families, contributing the control evidence and audit readiness behind an achieved SOC 2.',
       },
       {
         name: 'PCI DSS',
         detail:
-          'Built cardholder-data controls, endpoint DLP and a clean-room VDI workspace, that fulfilled PCI DSS requirements.',
+          'Built cardholder-data controls, endpoint DLP, a clean-room VDI workspace, and the Page Shield rollout that closed PCI DSS 4.0 script-integrity requirements.',
+      },
+      {
+        name: 'Compliance Evidence Automation',
+        detail:
+          'Automated the monthly SOC 2 and PCI evidence pipeline across 12+ systems, cutting roughly 10 hours a month of manual GRC work.',
+      },
+      {
+        name: 'Security Standards Authorship',
+        detail:
+          'Authored the security standards covering Dockerfile hardening, S3 secure configuration, logging configuration, sensitive data transmission, hosted server hardening, and cryptographic architecture.',
       },
       {
         name: 'GRC',
@@ -214,17 +266,22 @@ export const skills = [
     ],
   },
   {
-    category: 'Leadership & Mentorship',
+    category: 'Leadership & Strategy',
     items: [
       {
         name: 'Team Leadership & Mentorship',
         detail:
-          'Mentors engineers and embedded with a newly formed IAM team to help it reach operational readiness.',
+          'Mentors engineers, embedded with a newly formed IAM team to help it reach operational readiness, and wrote the onboarding checklists and hiring retrospectives for new security engineers.',
       },
       {
         name: 'Leading Cross-Functional Initiatives',
         detail:
           'Coordinated security assessments and remediation across engineering teams, balancing risk reduction with development velocity.',
+      },
+      {
+        name: 'Cloud Cost Optimization',
+        detail:
+          'Turned measured benchmarks into a funded migration program, then delivered more than $300K a year in savings verified on the AWS bill rather than modeled.',
       },
       {
         name: 'Risk Management & Decision Making',
@@ -242,29 +299,54 @@ export const skills = [
 
 /**
  * Work experience — most recent first. Each role separates leadership impact from technical delivery.
+ *
+ * NOTE on the Benchmark Analytics entry: the role started Aug 2026 and carries NO
+ * bullets by the owner's decision. Nothing has been earned there yet, and job-
+ * description scope is not accomplishment (L4). The card intentionally shows the
+ * post and its environment only. Add bullets when real outcomes land, marked with
+ * their own numbers. Lumin-era scale figures are snapshots as of departure
+ * (Aug 2026) and are deliberately frozen.
  * @type {ExperienceEntry[]}
  */
 export const experience = [
   {
+    company: 'Benchmark Analytics',
+    role: 'Senior Cloud Security Engineer',
+    start: '2026-08',
+    end: 'Present',
+    leadership: [],
+    delivery: [],
+    metrics: [
+      { label: 'Focus', value: 'Cloud Security' },
+      { label: 'Platform', value: 'AWS · EKS' },
+      { label: 'Compliance', value: 'CJIS · SOC 2' },
+    ],
+  },
+  {
     company: 'Lumin Digital',
     role: 'Cyber Security Engineer',
     start: '2023-08',
-    end: 'Present',
+    end: '2026-08',
     leadership: [
+      'Owned cloud security across 40+ AWS accounts serving 8.2M+ users on 100+ credit union and community bank platforms: posture management, IAM, edge, and zero-trust access',
       'Embedded with a newly formed IAM team for six months to help it reach operational readiness, focusing on automation and provisioning standardization while the team hired for capacity',
-      'Drive security roadmap decisions for multi-account AWS infrastructure serving 8M+ users across 90+ client platforms',
       'Partnered with leadership on GRC initiatives, achieving SOC 2 and PCI DSS compliance',
+      'Led internal AI enablement trainings, authored the platform security standards and 18 knowledge-base pages, and ran onboarding and hiring retrospectives for new security engineers',
     ],
     delivery: [
-      'Led deployment of Cloud Security Posture Management (CSPM) across 30+ AWS accounts with 200k+ resources, improving visibility and compliance posture',
-      'Designed internal Data Loss Prevention (DLP) tool deployed to 100+ endpoints, reducing compliance risk for sensitive data and fulfilling PCI requirements',
-      'Built and maintained security automation across the cloud environment, improving security operations efficiency',
+      'Migrated the security log transformation fleet, 18 Lambda functions processing roughly 2 billion records a day into the SIEM, from Python to a config-driven Go engine I built. Zero production errors across all 18 cutovers, more than $300K a year in bill-verified savings, and about 20x lower transform latency',
+      'Built a PCI-compliant ephemeral VDI platform end to end: private VPC, hardened golden image with security agents baked in, WorkSpaces Pools, and a weekly image-refresh pipeline. Sessions start clean, and moving off always-on infrastructure cut AWS VDI spend about 94%',
+      'Rolled out Cloud Security Posture Management across 40+ AWS accounts and 2.5M+ resources, wiring findings into existing alerting and remediation workflows',
+      'Engineered a Python tool to enable Cloudflare Page Shield across 100% of production zones, closing PCI DSS 4.0 script-integrity gaps the Terraform provider could not',
+      'Built an internal Data Loss Prevention tool on 100+ endpoints classifying cardholder data with deterministic rule-based detection, closing a PCI control requirement',
+      'Automated the monthly SOC 2 and PCI evidence pipeline across 12+ systems, cutting roughly 10 hours a month of manual work, and ran certificate and key lifecycle for 40+ financial-institution and vendor integrations with no cert-expiry outages',
     ],
     metrics: [
-      { label: 'Users', value: '8M+' },
-      { label: 'Client Platforms', value: '90+' },
-      { label: 'AWS Accounts', value: '30+' },
-      { label: 'Resources', value: '200k+' },
+      { label: 'Users', value: '8.2M+' },
+      { label: 'Client Platforms', value: '100+' },
+      { label: 'AWS Accounts', value: '40+' },
+      { label: 'Resources', value: '2.5M+' },
+      { label: 'Cloud Savings', value: '$300K+/yr' },
     ],
   },
   {
@@ -274,16 +356,20 @@ export const experience = [
     end: '2023-08',
     leadership: [
       'Led cross-functional vulnerability management team. Established processes that achieved consistent SLA compliance for high/critical remediation',
+      'Set the enterprise vulnerability scoring standard: authored the comparative analysis of CVSS v2, CVSS v3, and Tenable VPR that drove the migration to CVSS v3, reclassifying about 120 findings out of critical so remediation effort targeted true criticals',
       'Developed team workflows and escalation procedures that reduced average remediation time and improved stakeholder communication',
-      'Coordinated security assessments across engineering teams, balancing risk reduction with development velocity',
+      'Cut vendor and partner security reviews to under a week, half the vendor SLA, with priority reviews turned same day so security stayed off the critical path',
     ],
     delivery: [
       'Implemented enterprise-wide vulnerability scanning program and remediation controls, measurably decreasing at-risk system exposure',
-      'Drove risk mitigation strategies in partnership with infrastructure and development teams, strengthening overall security posture',
+      'Stood up Active Directory security assessments with Purple Knight against the non-Azure forest, evaluating 100+ indicators of exposure and driving remediation of 4 critical exposures plus 37 additional findings',
+      'Built detection and log coverage in Splunk Cloud: a PowerShell deployment for Sysmon, new sources onboarded into forwarder configs, alert authoring, and false-positive tuning',
+      'Automated M&A endpoint onboarding with cross-platform forwarder install scripts for Windows, macOS, Ubuntu, and CentOS, cutting install time to roughly a minute per host',
     ],
     metrics: [
       { label: 'Role', value: 'Team Lead' },
       { label: 'Focus', value: 'Vuln Mgmt' },
+      { label: 'Alerts Triaged', value: '250+' },
     ],
   },
   {
@@ -328,9 +414,55 @@ export const projects = [
     date: 'Current',
     summary: 'Leveraging modern AI tooling and development practices to accelerate security engineering velocity.',
     description:
-      'Recent focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. This portfolio site is itself an example, built collaboratively with AI-driven development to ship faster without sacrificing quality.',
-    tags: ['AI', 'Automation', 'Developer Velocity', 'Innovation'],
-    impact: 'Demonstrating that disciplined process and modern AI tooling compound engineering output.',
+      'Ongoing focus area: integrating agentic AI assistants and modern development practices into the security engineering workflow. Internal Claude Code plugins, custom skills, MCP servers, and agents shipped through a self-hosted marketplace encode institutional knowledge so repeatable security work scales, backed by an architecture decision record, a blueprint schema, and tiered autonomy policies governing what agents may do unattended.',
+    tags: ['AI', 'Automation', 'Plugin Marketplace', 'Autonomy Policy', 'Developer Velocity'],
+    impact: 'Demonstrating that disciplined process and modern AI tooling compound engineering output, with the governance model to scale it safely.',
+    links: [],
+  },
+  {
+    kind: 'work',
+    title: 'Security Log Pipeline: Python to Go Migration',
+    date: '2026',
+    summary:
+      'Rewrote the security log transformation fleet, 18 Lambda functions carrying about 2 billion records a day into the SIEM, as a config-driven Go engine and cut every stream over with zero production errors.',
+    description:
+      'A three-act program: build a benchmarking harness rigorous enough to produce the business case, build a Go engine that executes per-stream YAML configs with Python-parity semantics, then migrate 18 production streams one at a time, each cutover independently reversible. Parity was measured rather than asserted, field by field, over roughly 991,000 fresh production records.',
+    tags: ['Go', 'Python', 'AWS Lambda', 'Kinesis Firehose', 'OpenSearch SIEM', 'Zero-Downtime Migration', 'Differential Testing'],
+    impact: 'All 18 cutovers landed with zero production errors, more than $300K a year in bill-verified savings, and about 20x lower transform latency.',
+    links: [],
+    caseStudy: [
+      {
+        heading: 'The problem',
+        body: 'Eighteen AWS Lambda functions transformed roughly 2 billion security log records a day on their way into the OpenSearch SIEM, and detections downstream depended on every field they emitted. The Python fleet was the single largest line on the account\'s Lambda bill and its p99 transform latency reached 9.4 seconds. Rewriting it was the obvious move and also the dangerous one: a silently dropped or renamed field would degrade detections without failing anything.',
+      },
+      {
+        heading: 'The approach',
+        body: 'Act one built lambda-transform-bench, a language-agnostic harness with process-contract adapters, correctness oracles derived from each app\'s own production fixtures, deterministic load simulation, hardware-counted instructions per record, and a Docker plus Lambda-RIE backend measuring genuine cold starts. Its cost model produced the business case. Act two built GoStash, a Go engine executing per-stream YAML with pydash-parity path semantics, Python-parity operators, and an expression language with Python truthiness. Act three migrated the fleet, cost drivers first, one reversible stream at a time.',
+      },
+      {
+        heading: 'Key decisions',
+        points: [
+          'Measure before proposing: the migration was funded on benchmarked numbers, and the same harness then served as the parity gate for every cutover.',
+          'Bug-for-bug porting against fixtures whose expectations were generated only by executing the real Python engine, with a CI staleness gate making oracle and test drift impossible.',
+          'Merge, not cutover, is the point of no return. Each stream was staged from a branch image, backed by a digest-pinned one-command backout, swapped in place, soaked on live metrics, and only then merged into CI ownership.',
+          'One shared engine fans out to every stream, so engine changes got the strictest rule in the program: additive-only, every stream\'s oracle in CI, and all live binaries rebuilt and re-run over their full corpora with zero output changes before any engine PR merged.',
+        ],
+      },
+      {
+        heading: 'Outcome',
+        body: 'All 18 cutovers completed with zero production errors. Lambda spend fell from about $885 a day to about $62 a day, more than $300K a year verified on the AWS bill rather than modeled. Fleet-weighted transform latency improved about 20x, from 3.9 seconds to 196 milliseconds average, with the 9.4 second Python p99 replaced by sub-second Go worst cases. The config-versus-code question resolved empirically: 14 of 18 streams needed pure config, and four needed fifteen small Go functions total, each with a documented reason config could not express it.',
+      },
+    ],
+  },
+  {
+    kind: 'work',
+    title: 'Cloudflare Page Shield Rollout for PCI DSS 4.0',
+    date: '2026',
+    summary: 'Python tooling that enabled Page Shield across every production zone when the Terraform provider had no support for it.',
+    description:
+      'PCI DSS 4.0 requirements 6.4.3 and 11.6.1 demand script-integrity monitoring on payment pages, and the Cloudflare Terraform provider could not express it. Engineered a Python tool that enabled Page Shield across every production zone directly against the API, then built the script and connection inventory the SOC uses to justify what runs on those pages. Also deployed API Shield to client zones and remediated external pen-test WAF findings.',
+    tags: ['Cloudflare', 'Page Shield', 'API Shield', 'PCI DSS 4.0', 'Python', 'Edge Security'],
+    impact: 'Closed the script-integrity gap platform-wide ahead of provider support, and left the SOC an authoritative inventory of what executes on payment pages.',
     links: [],
   },
   {
@@ -339,18 +471,18 @@ export const projects = [
     date: 'Feb 2026',
     summary: 'Clean-room VDI environment for PCI data. A weekly pipeline builds a golden image, and each user session runs in an ephemeral VDI instance provisioned from it.',
     description:
-      'Developed a secure workspace for handling PCI cardholder data using virtual desktop infrastructure (VDI). A pipeline builds a golden image on a weekly cadence, and each user session runs in an ephemeral VDI instance provisioned from that image. Every session begins from a known-clean state.',
-    tags: ['PCI DSS', 'VDI', 'Ephemeral Infrastructure', 'Golden Image Pipeline', 'Compliance Engineering'],
-    impact: 'Established a clean-room pattern for PCI data handling. Each session starts from a freshly built golden image, with no carryover state between rebuilds.',
+      'Built a secure workspace for handling PCI cardholder data end to end: private VPC and networking, a hardened golden image with security agents baked in, WorkSpaces Pools, and a weekly automated image-refresh pipeline carried through pilot. Each user session runs in an ephemeral instance provisioned from the freshly built image, so every session begins from a known-clean state.',
+    tags: ['PCI DSS', 'VDI', 'AWS WorkSpaces', 'Ephemeral Infrastructure', 'Golden Image Pipeline', 'Compliance Engineering'],
+    impact: 'Established a clean-room pattern for PCI data handling, with no carryover state between rebuilds and no always-on infrastructure left standing.',
     links: [],
   },
   {
     kind: 'work',
     title: 'Enterprise Cloud Security Posture Management',
     date: 'Nov 2025',
-    summary: 'Designed the account-onboarding, alerting, and remediation workflows behind a multi-account CSPM program.',
+    summary: 'Evaluated three CSPM platforms for the SOC, then designed the account-onboarding, alerting, and remediation workflows behind the one that shipped.',
     description:
-      'Led the end-to-end deployment of a Cloud Security Posture Management solution across a multi-account AWS environment. Designed onboarding workflows, integrated with existing alerting infrastructure, and partnered with engineering leadership on remediation processes.',
+      'Led the end-to-end deployment of a Cloud Security Posture Management solution across a multi-account AWS environment. Evaluated and stood up three candidate platforms, designed onboarding workflows, integrated with existing alerting infrastructure, and partnered with engineering leadership on remediation processes.',
     tags: ['AWS', 'CSPM', 'Multi-Account', 'Compliance', 'Leadership'],
     impact: 'Gave engineering leadership a repeatable onboarding and remediation process, turning posture findings into tracked, owned work.',
     links: [],
@@ -372,7 +504,7 @@ export const projects = [
     date: 'Mar 2025',
     summary: 'Built a rule-based DLP capability for sensitive data, from classification through audit reporting.',
     description:
-      'Designed and implemented an internal DLP tool to protect sensitive data (including primary account numbers). Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
+      'Designed and implemented an internal DLP tool to protect sensitive data, including primary account numbers, with deterministic rule-based detection. Coordinated rollout across endpoints, partnered with compliance for control mapping, and produced reporting for audits.',
     tags: ['DLP', 'PCI DSS', 'Endpoint Security', 'Compliance Engineering'],
     impact: 'Mapped detection rules to PCI controls and produced the reporting auditors needed, closing a compliance gap for cardholder data.',
     links: [],
@@ -381,12 +513,27 @@ export const projects = [
     kind: 'work',
     title: 'Enterprise Vulnerability Management Program',
     date: 'Aug 2022',
-    summary: 'Built the workflows, escalation paths, and stakeholder communication for an enterprise vuln management program.',
+    summary: 'Built the workflows, escalation paths, and scoring standard for an enterprise vuln management program.',
     description:
-      'Built workflows, escalation procedures, and stakeholder communication patterns for an enterprise vulnerability management program. Coordinated assessments across engineering teams while balancing risk reduction with development velocity.',
-    tags: ['Vulnerability Management', 'Team Lead', 'SLA', 'Cross-Functional'],
-    impact: 'Gave the org a predictable triage-to-remediation pipeline that balanced risk reduction against development velocity.',
+      'Built workflows, escalation procedures, and stakeholder communication patterns for an enterprise vulnerability management program. Authored the comparative analysis of CVSS v2, CVSS v3, and Tenable VPR that justified migrating the enterprise scoring standard, and expanded assessment coverage past traditional scanning by standing up Active Directory security assessments with Purple Knight.',
+    tags: ['Vulnerability Management', 'Team Lead', 'CVSS', 'Tenable VPR', 'Active Directory', 'Cross-Functional'],
+    impact: 'Gave the org a predictable triage-to-remediation pipeline and a scoring standard that pointed remediation effort at true criticals rather than scoring artifacts.',
     links: [],
+  },
+  {
+    kind: 'oss',
+    title: 'frisk: Vet an MCP Server Before You Trust It',
+    date: 'Jul 2026',
+    summary:
+      'A security scanner that connects to a third-party MCP server in a sandbox with planted bait credentials, runs deterministic detectors against the tool definitions a model would actually see, and stamps a verdict before the server touches the real machine.',
+    description:
+      'frisk treats an MCP tool description as the instruction channel it really is. It flags instruction injection, hidden zero-width and bidi-override content, scope-creep parameters soliciting conversation history or API keys, and names impersonating trusted built-in tools. A honeypot sandbox with fake credentials catches exfiltration attempts and detects rug-pulls, servers that ship benign, wait for approval, then mutate.',
+    tags: ['MCP', 'Supply Chain Security', 'Sandboxed Scanning', 'Deterministic Detection', 'Python', 'Open Source', 'MIT'],
+    impact: 'Stage one of a vet, firewall, guard defense-in-depth model for AI-agent tooling. 211 passing tests, and a fixture MCP server with malicious variants so every finding reproduces from a fresh clone.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/Realgagenichols/frisk' },
+      { label: 'Playground', url: 'https://realgagenichols.github.io/frisk/' },
+    ],
   },
   {
     kind: 'oss',
@@ -425,6 +572,18 @@ export const projects = [
         body: 'Published to PyPI as `mcp-tollbooth`, MIT licensed, with 371 passing tests. A single config turns an unmediated agent into a governed one: a firewall, DLP, and audit layer for the fast-growing and largely unsecured surface of AI-agent tool use.',
       },
     ],
+  },
+  {
+    kind: 'oss',
+    title: 'splashpass: Privacy-Preserving Captive Portal Automation',
+    date: 'Jun 2026',
+    summary:
+      'Clears public-WiFi captive portals with throwaway data, detecting the splash page, filling it with a fresh randomized identity, submitting, and verifying you are online.',
+    description:
+      'Detects captive portals via OS connectivity probes, classifies online versus captive, extracts the portal URL through redirect, meta-refresh, then body scan, and picks the actual registration form while skipping newsletter, search, and login forms. Clicks through the portal exactly as offered and never bypasses payment.',
+    tags: ['Privacy Engineering', 'PII-Safe Logging', 'macOS', 'Python', 'Open Source', 'MIT'],
+    impact: 'Privacy by design with a hard guarantee: no submitted field value is ever written to a log, only field categories and counts, and the 156-test suite asserts it.',
+    links: [{ label: 'GitHub', url: 'https://github.com/Realgagenichols/splashpass' }],
   },
   {
     kind: 'oss',
@@ -492,9 +651,9 @@ export const sections = [
  * SEO metadata defaults.
  */
 export const seo = {
-  title: 'Gage Nichols | Cyber Security Engineer · Cloud Security & Automation',
+  title: 'Gage Nichols | Senior Cloud Security Engineer · Cloud Security & Automation',
   description:
-    'Cyber security engineer focused on cloud security, security engineering, and security automation across AWS, with agentic AI tooling.',
+    'Senior cloud security engineer focused on AWS multi-account security, platform and performance engineering, compliance delivery, and agentic AI tooling.',
   // Path is relative so the site stays portable across GitHub Pages subpath
   // and custom domain deployments.  The image lives in each theme's public/
   // directory so it lands at dist/og-image.jpg.

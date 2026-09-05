@@ -57,12 +57,15 @@ describe('Projects (R4)', () => {
   it('renders the open-source repos with GitHub links to the owner account', () => {
     render(<Projects />);
     const ossUrls = [
+      'https://github.com/Realgagenichols/frisk',
       'https://github.com/Realgagenichols/tollbooth',
+      'https://github.com/Realgagenichols/splashpass',
       'https://github.com/Realgagenichols/claude-dlp-guard',
       'https://github.com/Realgagenichols/mission-control',
     ];
-    // Sanity-check the data shape first.
-    expect(projects.filter((p) => p.kind === 'oss')).toHaveLength(3);
+    // Sanity-check the data shape first: every oss project carries a GitHub link.
+    const oss = projects.filter((p) => p.kind === 'oss');
+    expect(oss).toHaveLength(ossUrls.length);
 
     const githubLinks = screen.getAllByRole('link', { name: /github/i });
     for (const url of ossUrls) {
@@ -93,7 +96,7 @@ describe('Projects (R4)', () => {
       'Internal Data Loss Prevention (DLP) Platform',
       'Enterprise Vulnerability Management Program',
     ];
-    const metricTokens = [/\b30\+/, /\b200k\+/, /\b100\+/];
+    const metricTokens = [/\b40\+/, /\b2\.5M\+/, /\b100\+/];
     for (const title of overlapping) {
       const project = projects.find((p) => p.title === title);
       expect(project, `project "${title}" not found`).toBeTruthy();
@@ -120,14 +123,18 @@ describe('Projects (R4)', () => {
   });
 });
 
-// R4.1 (changes/tollbooth-case-study): flagship case study, expand-in-place.
+// R4.1 (changes/tollbooth-case-study): flagship case studies, expand-in-place.
 describe('Projects case study (R4.1)', () => {
   const heads = ['The problem', 'The approach', 'Key decisions', 'Outcome'];
+  const withCaseStudy = projects.filter((p) => Array.isArray(p.caseStudy) && p.caseStudy.length);
 
   it('is collapsed by default with a toggle control', () => {
     render(<Projects />);
-    const toggle = screen.getByRole('button', { name: /read the case study/i });
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    const toggles = screen.getAllByRole('button', { name: /read the case study/i });
+    expect(toggles.length).toBeGreaterThan(0);
+    for (const toggle of toggles) {
+      expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    }
     for (const h of heads) {
       expect(screen.queryByText(h)).not.toBeInTheDocument();
     }
@@ -135,21 +142,29 @@ describe('Projects case study (R4.1)', () => {
 
   it('reveals the case-study sections when toggled', async () => {
     render(<Projects />);
-    const toggle = screen.getByRole('button', { name: /read the case study/i });
-    await userEvent.click(toggle);
+    // Open one at a time so the shared section headings stay unambiguous.
+    for (let i = 0; i < withCaseStudy.length; i += 1) {
+      const toggle = screen.getAllByRole('button', { name: /read the case study/i })[i];
+      await userEvent.click(toggle);
 
-    const expanded = screen.getByRole('button', { name: /close case study/i });
-    expect(expanded).toHaveAttribute('aria-expanded', 'true');
-    for (const h of heads) {
-      expect(screen.getByText(h)).toBeInTheDocument();
+      const expanded = screen.getByRole('button', { name: /close case study/i });
+      expect(expanded).toHaveAttribute('aria-expanded', 'true');
+      for (const h of heads) {
+        expect(screen.getByText(h)).toBeInTheDocument();
+      }
+      await userEvent.click(expanded);
     }
   });
 
-  it('shows no toggle on projects without a case study', () => {
+  it('renders exactly one toggle per project that carries a case study', () => {
     render(<Projects />);
-    // Exactly one project carries a caseStudy (tollbooth), so exactly one toggle exists.
-    const withCaseStudy = projects.filter((p) => Array.isArray(p.caseStudy) && p.caseStudy.length);
-    expect(withCaseStudy).toHaveLength(1);
-    expect(screen.getAllByRole('button', { name: /read the case study/i })).toHaveLength(1);
+    expect(withCaseStudy.length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('button', { name: /read the case study/i })).toHaveLength(
+      withCaseStudy.length,
+    );
+    // Every case study uses the same four-section shape.
+    for (const p of withCaseStudy) {
+      expect(p.caseStudy.map((s) => s.heading)).toEqual(heads);
+    }
   });
 });
